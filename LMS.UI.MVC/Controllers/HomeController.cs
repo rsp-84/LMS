@@ -48,6 +48,22 @@ namespace LMS.Controllers
             //Message to send to me
             string message = $"You have received an email from <strong>{cvm.Name}</strong> with a subject <strong>{cvm.Subject}</strong>. Please respond to <strong>{cvm.Email}</strong> with your response to the following message:<br />{cvm.Message}";
 
+            #region setup mail message
+            //Setup Mail Message
+            MailMessage mm = new MailMessage(
+                    "XXXX",
+                    "XXXX",
+                    cvm.Subject,
+                    message
+                );
+
+            mm.IsBodyHtml = true;
+            mm.Priority = MailPriority.High;
+            mm.ReplyToList.Add(cvm.Email);
+            SmtpClient client = new SmtpClient("XXXX");
+            client.Credentials = new NetworkCredential("XXXX", "XXXX");
+            client.Port = 8889;
+            #endregion
 
             //Try to send email
             try

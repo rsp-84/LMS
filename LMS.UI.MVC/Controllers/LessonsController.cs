@@ -132,6 +132,22 @@ namespace LMS.UI.MVC.Controllers
                     //Message to send to me
                     string message = $"<strong>{employeeThatCompleted.FirstName} {employeeThatCompleted.LastName}</strong> has completed <strong>{lesson.Course.CourseName}</strong> on <strong>{courseCompletion.DateCompleted:f}</strong>";
 
+                    #region setup mail message
+                    //Setup Mail Message
+                    MailMessage mm = new MailMessage(
+                            "XXXX",
+                            manager.Email,//the email is dynamic to the manager details, I added my email as the managers in the DB so that I can check it.
+                            "Course Completed Alert",
+                            message
+                        );
+
+                    mm.IsBodyHtml = true;
+                    mm.Priority = MailPriority.High;
+                    mm.ReplyToList.Add(User.Identity.GetUserName());
+                    SmtpClient client = new SmtpClient("XXXX");
+                    client.Credentials = new NetworkCredential("XXXX", "XXXX");
+                    client.Port = 8889;
+                    #endregion
 
                     //Try to send email
                     try
