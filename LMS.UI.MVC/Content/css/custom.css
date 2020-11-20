@@ -1,0 +1,57 @@
+﻿.navbar__icon {
+    width: 100px;
+}
+
+.ttmenu .navbar-brand {
+    top: -36px;
+}
+
+.jumbotron__logo {
+
+}
+
+.jumbotron__call-to-action {
+    margin-top: 128px;
+}
+
+.jumbotron__call-to-action--btn {
+    margin-top: 126px;
+}
+
+.contact-page__contact-details {
+    margin-bottom: 100px;
+}
+
+.email__confirmation-screen {
+    height: calc(100vh - 215px);
+}
+
+.class-list__image--size {
+    width: 274px;
+    height: 182px;
+}
+
+.course-list__grid {
+    margin-bottom: 100px;
+}
+
+.blog-image {
+    display: flex;
+}
+
+#player {
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.image__greyscale--100 {
+    filter: grayscale(1);
+}
+
+a[alt]:hover:after {
+    content: attr(alt);
+    display: inline-block;
+    position: relative;
+    border-bottom: 1px dotted #666;
+    text-align: left;
+}

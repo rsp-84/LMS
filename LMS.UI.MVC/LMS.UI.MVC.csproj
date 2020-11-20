@@ -1,0 +1,607 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1C40D5B8-588E-41B7-BEB5-966D09F79472}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LMS.UI.MVC</RootNamespace>
+    <AssemblyName>LMS.UI.MVC</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.0.0\lib\net451\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.0\lib\net451\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.0.0\lib\net451\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.0.0\lib\net451\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.0.0\lib\net451\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CoursesController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LessonsController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\UserAdminController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\ContactViewModel.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Utilities\ImageService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\A.carousel.css+bbpress.css,Mcc.aXsJ7_Y__m.css.pagespeed.cf.ERce4VkS3l.css" />
+    <Content Include="Content\css\A.carousel.css.pagespeed.cf.VktteGiLwl.css" />
+    <Content Include="Content\css\custom.css" />
+    <Content Include="Content\css\menu.css" />
+    <Content Include="Content\css\carousel.css" />
+    <Content Include="Content\css\carousel.css+bbpress.css.pagespeed.cc.aXsJ7_Y__m.css" />
+    <Content Include="Content\css\owl.video.play.html" />
+    <Content Include="Content\font-awesome-4.3.0.css" />
+    <Content Include="Content\fonts\font-awesome-4.3.0\fonts\fontawesome-webfonte0a5.html" />
+    <Content Include="Content\fonts\font-awesome-4.3.0\fonts\fontawesome-webfonte0a5.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.html" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\images\apple-touch-icon-57x57.png" />
+    <Content Include="Content\images\apple-touch-icon.png" />
+    <Content Include="Content\images\courses\t_noImage.png" />
+    <Content Include="Content\images\courses\noImage.png" />
+    <Content Include="Content\images\dummy.png" />
+    <Content Include="Content\images\favicon.ico" />
+    <Content Include="Content\images\loading.gif" />
+    <Content Include="Content\images\xlogo.png" />
+    <Content Include="Content\images\site.gif" />
+    <Content Include="Content\images\xapple-touch-icon-114x114.png" />
+    <Content Include="Content\images\xapple-touch-icon-120x120.png" />
+    <Content Include="Content\images\xapple-touch-icon-144x144.png" />
+    <Content Include="Content\images\xapple-touch-icon-152x152.png" />
+    <Content Include="Content\images\xapple-touch-icon-180x180.png" />
+    <Content Include="Content\images\xapple-touch-icon-72x72.png" />
+    <Content Include="Content\images\xapple-touch-icon-76x76.png" />
+    <Content Include="Content\images\xcredit.jpg.pagespeed.ic.lGluDMrwzI.jpg" />
+    <Content Include="Content\images\xdummy.png.pagespeed.ic.lRMfmktUso.png" />
+    <Content Include="Content\images\xlogin-logo.png.pagespeed.ic.rk5LaeLYSz.png" />
+    <Content Include="Content\images\xothers.png.pagespeed.ic.BLyi2PaMRC.png" />
+    <Content Include="Content\images\xothers1.png.pagespeed.ic.RtZTA6aSRP.png" />
+    <Content Include="Content\images\xsidelogo.png.pagespeed.ic.wjjT3_TtPG.png" />
+    <Content Include="Content\js\bootstrap.min.pMrMbVAe_E.js" />
+    <Content Include="Content\js\bxslider.js+custom.js.pagespeed.jc.QCoQfo32dZ.js" />
+    <Content Include="Content\js\bxslider.js.pagespeed.jm.X-sF7YFq4Y.js" />
+    <Content Include="Content\js\carousel.js+custom.js+contact.js+map.js.pagespeed.jc.PhbsLlMzIs.js" />
+    <Content Include="Content\js\carousel.js+custom.js+jquery.fitvids.js.pagespeed.jc.ghpaVHFgk4.js" />
+    <Content Include="Content\js\carousel.js+parallax.min.js+custom.js.pagespeed.jc.lVSvRd9-tY.js" />
+    <Content Include="Content\js\carousel.js.pagespeed.jm.Q7bTgZe8yn.js" />
+    <Content Include="Content\js\carousel.nVhk-UfDsv.js" />
+    <Content Include="Content\js\contact.js+map.js.pagespeed.jc.F-5JFqN28v.js" />
+    <Content Include="Content\js\isotope.js" />
+    <Content Include="Content\js\jquery.min.js" />
+    <Content Include="Content\rs-plugin\assets\xgridtile.png.pagespeed.ic.jHoNokq0WL.png" />
+    <Content Include="Content\rs-plugin\css\settings.css" />
+    <Content Include="Content\rs-plugin\font\revicons90c6.svg" />
+    <Content Include="Content\rs-plugin\images\gradient\xg30.png.pagespeed.ic.nN8k5eNwVx.png" />
+    <Content Include="Content\rs-plugin\js\jquery.themepunch.revolution.min.js" />
+    <Content Include="Content\rs-plugin\js\jquery.themepunch.tools.min.js" />
+    <Content Include="Content\style.pWH5huNcWh.css" />
+    <Content Include="Content\upload\video.mp4" />
+    <Content Include="Content\upload\video.ogv" />
+    <Content Include="Content\upload\video.webm" />
+    <Content Include="Content\upload\xabout_01.jpg.pagespeed.ic.kjNqMAPXcG.jpg" />
+    <Content Include="Content\upload\xabout_02.jpg.pagespeed.ic.D36tpcmMNB.jpg" />
+    <Content Include="Content\upload\xbadge_01.jpg.pagespeed.ic.7sR81VjNIg.jpg" />
+    <Content Include="Content\upload\xbadge_02.jpg.pagespeed.ic.tGcqu0q68d.jpg" />
+    <Content Include="Content\upload\xbadge_03.jpg.pagespeed.ic.7i4Y7ZiVpj.jpg" />
+    <Content Include="Content\upload\xbadge_04.jpg.pagespeed.ic.K24ADnID_t.jpg" />
+    <Content Include="Content\upload\xbadge_05.jpg.pagespeed.ic.iD5n0TOxNG.jpg" />
+    <Content Include="Content\upload\xbadge_06.jpg.pagespeed.ic.GfHOK9UUgx.jpg" />
+    <Content Include="Content\upload\xblog_01.jpg.pagespeed.ic.2jVY1j1OMe.jpg" />
+    <Content Include="Content\upload\xblog_02.jpg.pagespeed.ic.VhhhBexs2E.jpg" />
+    <Content Include="Content\upload\xblog_03.jpg.pagespeed.ic.ZGQLz9XvWC.jpg" />
+    <Content Include="Content\upload\xclient_01.png.pagespeed.ic.m5NnlxSzhM.png" />
+    <Content Include="Content\upload\xclient_02.png.pagespeed.ic.BsH9V4BqCi.png" />
+    <Content Include="Content\upload\xclient_03.png.pagespeed.ic.mxzQrepbL_.png" />
+    <Content Include="Content\upload\xclient_04.png.pagespeed.ic.Fx2ObIy0Eb.png" />
+    <Content Include="Content\upload\xclient_05.png.pagespeed.ic.GBNy2ra72B.png" />
+    <Content Include="Content\upload\xclient_06.png.pagespeed.ic.a_uqmnbFy0.png" />
+    <Content Include="Content\upload\xcourse_01.png.pagespeed.ic.XTOvCuUmZu.png" />
+    <Content Include="Content\upload\xcourse_02.png.pagespeed.ic.PL7Wu2UcSB.png" />
+    <Content Include="Content\upload\xcourse_03.png.pagespeed.ic.8e1MyY5M7i.png" />
+    <Content Include="Content\upload\xcourse_04.png.pagespeed.ic.2rIKmUwjA7.png" />
+    <Content Include="Content\upload\xcourse_05.png.pagespeed.ic.mrKpzOf8LX.png" />
+    <Content Include="Content\upload\xcourse_06.png.pagespeed.ic.2iR1Lq1HrU.png" />
+    <Content Include="Content\upload\xcourse_07.png.pagespeed.ic.KNvblD_Vd1.png" />
+    <Content Include="Content\upload\xcourse_08.png.pagespeed.ic.uuUPd8pkHT.png" />
+    <Content Include="Content\upload\xcourse_09.png.pagespeed.ic.onaUPvr7s-.png" />
+    <Content Include="Content\upload\xcourse_10.png.pagespeed.ic.Vk_tFeUOXa.png" />
+    <Content Include="Content\upload\xcourse_11.png.pagespeed.ic._TBnV-TA7x.png" />
+    <Content Include="Content\upload\xcourse_12.png.pagespeed.ic.25NTcM097E.png" />
+    <Content Include="Content\upload\xdevice_01.png.pagespeed.ic.v31CZTVqg0.png" />
+    <Content Include="Content\upload\xdevice_02.png.pagespeed.ic.w5TutKGgkN.png" />
+    <Content Include="Content\upload\xparallax_01.jpg.pagespeed.ic.JPVsQrTu6o.jpg" />
+    <Content Include="Content\upload\xparallax_02.jpg.pagespeed.ic.Sx1_qXOliB.jpg" />
+    <Content Include="Content\upload\xservice_01.png.pagespeed.ic.2iuJZT3CaV.png" />
+    <Content Include="Content\upload\xservice_02.png.pagespeed.ic.c6RThoxSWC.png" />
+    <Content Include="Content\upload\xservice_03.png.pagespeed.ic.E_Ew4wn4ZP.png" />
+    <Content Include="Content\upload\xservice_04.png.pagespeed.ic.NGi9jRXTXk.png" />
+    <Content Include="Content\upload\xservice_05.png.pagespeed.ic.2iuJZT3CaV.png" />
+    <Content Include="Content\upload\xservice_06.png.pagespeed.ic.o2Uniwq-y5.png" />
+    <Content Include="Content\upload\xservice_07.png.pagespeed.ic.H-fRTeeP8u.png" />
+    <Content Include="Content\upload\xservice_08.png.pagespeed.ic.76ek5JLaEY.png" />
+    <Content Include="Content\upload\xservice_09.png.pagespeed.ic.FJcG938KC-.png" />
+    <Content Include="Content\upload\xsingle_shop.jpg.pagespeed.ic.yMJhawG7Q-.jpg" />
+    <Content Include="Content\upload\xsingle_shop_01.jpg.pagespeed.ic.L1-A5EffmO.jpg" />
+    <Content Include="Content\upload\xsingle_shop_02.jpg.pagespeed.ic.Q5t1exZyYW.jpg" />
+    <Content Include="Content\upload\xslider_new_01.jpg.pagespeed.ic.RgCY2ieSzC.jpg" />
+    <Content Include="Content\upload\xslider_new_02.jpg.pagespeed.ic.QHr4wT-HDB.jpg" />
+    <Content Include="Content\upload\xslider_new_03.jpg.pagespeed.ic.0dDeZb1yS7.jpg" />
+    <Content Include="Content\upload\xstudent_01.png.pagespeed.ic.756JwMcqdq.png" />
+    <Content Include="Content\upload\xstudent_02.png.pagespeed.ic.y-PM-y4pVj.png" />
+    <Content Include="Content\upload\xstudent_03.png.pagespeed.ic.uCQY3WNMCJ.png" />
+    <Content Include="Content\upload\xstudent_04.png.pagespeed.ic.e7uTdONUv0.png" />
+    <Content Include="Content\upload\xstudent_05.png.pagespeed.ic.moTx3bMNF3.png" />
+    <Content Include="Content\upload\xstudent_06.png.pagespeed.ic.M4STWuf1XS.png" />
+    <Content Include="Content\upload\xteam_01.jpg.pagespeed.ic.uNKwi9Xmie.jpg" />
+    <Content Include="Content\upload\xteam_02.jpg.pagespeed.ic.Foo3PN64df.jpg" />
+    <Content Include="Content\upload\xteam_03.jpg.pagespeed.ic.Mw22RnI1eL.jpg" />
+    <Content Include="Content\upload\xteam_04.jpg.pagespeed.ic.equz9NTtM1.jpg" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ViewerJS\compatibility.js" />
+    <Content Include="ViewerJS\example.local.css" />
+    <Content Include="ViewerJS\images\kogmbh.png" />
+    <Content Include="ViewerJS\images\nlnet.png" />
+    <Content Include="ViewerJS\images\texture.png" />
+    <Content Include="ViewerJS\images\toolbarButton-download.png" />
+    <Content Include="ViewerJS\images\toolbarButton-fullscreen.png" />
+    <Content Include="ViewerJS\images\toolbarButton-menuArrows.png" />
+    <Content Include="ViewerJS\images\toolbarButton-pageDown.png" />
+    <Content Include="ViewerJS\images\toolbarButton-pageUp.png" />
+    <Content Include="ViewerJS\images\toolbarButton-presentation.png" />
+    <Content Include="ViewerJS\images\toolbarButton-zoomIn.png" />
+    <Content Include="ViewerJS\images\toolbarButton-zoomOut.png" />
+    <Content Include="ViewerJS\index.html" />
+    <Content Include="ViewerJS\pdf.js" />
+    <Content Include="ViewerJS\pdf.worker.js" />
+    <Content Include="ViewerJS\pdfjsversion.js" />
+    <Content Include="ViewerJS\text_layer_builder.js" />
+    <Content Include="ViewerJS\ui_utils.js" />
+    <Content Include="ViewerJS\webodf.js" />
+    <Content Include="_archive\course-filterable.html" />
+    <Content Include="_archive\course-single.html" />
+    <Content Include="_archive\font-awesome-4.3.0.css" />
+    <Content Include="_archive\index9.html" />
+    <Content Include="_archive\page-about.html" />
+    <Content Include="_archive\page-contact.html" />
+    <Content Include="_archive\page-fullwidth.html" />
+    <Content Include="_archive\page-not-found.html" />
+    <Content Include="_archive\style.pWH5huNcWh.css" />
+    <Content Include="_archive\css\A.carousel.css+bbpress.css,Mcc.aXsJ7_Y__m.css.pagespeed.cf.ERce4VkS3l.css" />
+    <Content Include="_archive\css\carousel.css" />
+    <Content Include="_archive\css\A.carousel.css.pagespeed.cf.VktteGiLwl.css" />
+    <Content Include="_archive\css\A.menu.css.pagespeed.cf.0_hLwXzYkZ.css" />
+    <Content Include="_archive\css\carousel.css+bbpress.css.pagespeed.cc.aXsJ7_Y__m.css" />
+    <Content Include="_archive\css\owl.video.play.html" />
+    <Content Include="_archive\fonts\font-awesome-4.3.0\fonts\fontawesome-webfonte0a5.html" />
+    <Content Include="_archive\fonts\font-awesome-4.3.0\fonts\fontawesome-webfonte0a5.svg" />
+    <Content Include="_archive\fonts\glyphicons-halflings-regular.html" />
+    <Content Include="_archive\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="_archive\images\apple-touch-icon-57x57.png" />
+    <Content Include="_archive\images\apple-touch-icon.png" />
+    <Content Include="_archive\images\dummy.png" />
+    <Content Include="_archive\images\favicon.ico" />
+    <Content Include="_archive\images\loading.gif" />
+    <Content Include="_archive\images\site.gif" />
+    <Content Include="_archive\images\xapple-touch-icon-114x114.png.pagespeed.ic.Fi5O5s2tzL.png" />
+    <Content Include="_archive\images\xapple-touch-icon-120x120.png.pagespeed.ic.uPQH0sygdV.png" />
+    <Content Include="_archive\images\xapple-touch-icon-144x144.png.pagespeed.ic.yZ9-_sm5OF.png" />
+    <Content Include="_archive\images\xapple-touch-icon-152x152.png.pagespeed.ic.gThaVrKtXF.png" />
+    <Content Include="_archive\images\xapple-touch-icon-180x180.png.pagespeed.ic.Q8Pmsj5fQM.png" />
+    <Content Include="_archive\images\xapple-touch-icon-72x72.png.pagespeed.ic.lf5d8kCpOf.png" />
+    <Content Include="_archive\images\xapple-touch-icon-76x76.png.pagespeed.ic.ATZZpSeito.png" />
+    <Content Include="_archive\images\xcredit.jpg.pagespeed.ic.lGluDMrwzI.jpg" />
+    <Content Include="_archive\images\xdummy.png.pagespeed.ic.lRMfmktUso.png" />
+    <Content Include="_archive\images\xlogin-logo.png.pagespeed.ic.rk5LaeLYSz.png" />
+    <Content Include="_archive\images\xlogo.png.pagespeed.ic.vap6Ukaf0i.png" />
+    <Content Include="_archive\images\xothers.png.pagespeed.ic.BLyi2PaMRC.png" />
+    <Content Include="_archive\images\xothers1.png.pagespeed.ic.RtZTA6aSRP.png" />
+    <Content Include="_archive\images\xsidelogo.png.pagespeed.ic.wjjT3_TtPG.png" />
+    <Content Include="_archive\index.html" />
+    <Content Include="_archive\js\bootstrap.min.pMrMbVAe_E.js" />
+    <Content Include="_archive\js\bxslider.js+custom.js.pagespeed.jc.QCoQfo32dZ.js" />
+    <Content Include="_archive\js\bxslider.js.pagespeed.jm.X-sF7YFq4Y.js" />
+    <Content Include="_archive\js\carousel.js+custom.js+contact.js+map.js.pagespeed.jc.PhbsLlMzIs.js" />
+    <Content Include="_archive\js\carousel.js+custom.js+jquery.fitvids.js.pagespeed.jc.ghpaVHFgk4.js" />
+    <Content Include="_archive\js\carousel.nVhk-UfDsv.js" />
+    <Content Include="_archive\js\carousel.js+parallax.min.js+custom.js.pagespeed.jc.lVSvRd9-tY.js" />
+    <Content Include="_archive\js\carousel.js.pagespeed.jm.Q7bTgZe8yn.js" />
+    <Content Include="_archive\js\contact.js+map.js.pagespeed.jc.F-5JFqN28v.js" />
+    <Content Include="_archive\js\isotope.js.pagespeed.jm.3o8H2mhlCK.js" />
+    <Content Include="_archive\js\jquery.min.js.pagespeed.jm.iDyG3vc4gw.js" />
+    <Content Include="_archive\rs-plugin\assets\xgridtile.png.pagespeed.ic.jHoNokq0WL.png" />
+    <Content Include="_archive\rs-plugin\css\A.settings.css.pagespeed.cf.xeOyGChsgq.css" />
+    <Content Include="_archive\rs-plugin\font\revicons90c6.svg" />
+    <Content Include="_archive\rs-plugin\images\gradient\xg30.png.pagespeed.ic.nN8k5eNwVx.png" />
+    <Content Include="_archive\rs-plugin\js\jquery.themepunch.revolution.min.js" />
+    <Content Include="_archive\rs-plugin\js\jquery.themepunch.tools.min.js.pagespeed.jm.0PLSBOOLZa.js" />
+    <Content Include="_archive\upload\video.mp4" />
+    <Content Include="_archive\upload\video.ogv" />
+    <Content Include="_archive\upload\video.webm" />
+    <Content Include="_archive\upload\xabout_01.jpg.pagespeed.ic.kjNqMAPXcG.jpg" />
+    <Content Include="_archive\upload\xabout_02.jpg.pagespeed.ic.D36tpcmMNB.jpg" />
+    <Content Include="_archive\upload\xbadge_01.jpg.pagespeed.ic.7sR81VjNIg.jpg" />
+    <Content Include="_archive\upload\xbadge_02.jpg.pagespeed.ic.tGcqu0q68d.jpg" />
+    <Content Include="_archive\upload\xbadge_03.jpg.pagespeed.ic.7i4Y7ZiVpj.jpg" />
+    <Content Include="_archive\upload\xbadge_04.jpg.pagespeed.ic.K24ADnID_t.jpg" />
+    <Content Include="_archive\upload\xbadge_05.jpg.pagespeed.ic.iD5n0TOxNG.jpg" />
+    <Content Include="_archive\upload\xbadge_06.jpg.pagespeed.ic.GfHOK9UUgx.jpg" />
+    <Content Include="_archive\upload\xblog_01.jpg.pagespeed.ic.2jVY1j1OMe.jpg" />
+    <Content Include="_archive\upload\xblog_02.jpg.pagespeed.ic.VhhhBexs2E.jpg" />
+    <Content Include="_archive\upload\xblog_03.jpg.pagespeed.ic.ZGQLz9XvWC.jpg" />
+    <Content Include="_archive\upload\xclient_01.png.pagespeed.ic.m5NnlxSzhM.png" />
+    <Content Include="_archive\upload\xclient_02.png.pagespeed.ic.BsH9V4BqCi.png" />
+    <Content Include="_archive\upload\xclient_03.png.pagespeed.ic.mxzQrepbL_.png" />
+    <Content Include="_archive\upload\xclient_04.png.pagespeed.ic.Fx2ObIy0Eb.png" />
+    <Content Include="_archive\upload\xclient_05.png.pagespeed.ic.GBNy2ra72B.png" />
+    <Content Include="_archive\upload\xclient_06.png.pagespeed.ic.a_uqmnbFy0.png" />
+    <Content Include="_archive\upload\xcourse_01.png.pagespeed.ic.XTOvCuUmZu.png" />
+    <Content Include="_archive\upload\xcourse_02.png.pagespeed.ic.PL7Wu2UcSB.png" />
+    <Content Include="_archive\upload\xcourse_03.png.pagespeed.ic.8e1MyY5M7i.png" />
+    <Content Include="_archive\upload\xcourse_04.png.pagespeed.ic.2rIKmUwjA7.png" />
+    <Content Include="_archive\upload\xcourse_05.png.pagespeed.ic.mrKpzOf8LX.png" />
+    <Content Include="_archive\upload\xcourse_06.png.pagespeed.ic.2iR1Lq1HrU.png" />
+    <Content Include="_archive\upload\xcourse_07.png.pagespeed.ic.KNvblD_Vd1.png" />
+    <Content Include="_archive\upload\xcourse_08.png.pagespeed.ic.uuUPd8pkHT.png" />
+    <Content Include="_archive\upload\xcourse_09.png.pagespeed.ic.onaUPvr7s-.png" />
+    <Content Include="_archive\upload\xcourse_10.png.pagespeed.ic.Vk_tFeUOXa.png" />
+    <Content Include="_archive\upload\xcourse_11.png.pagespeed.ic._TBnV-TA7x.png" />
+    <Content Include="_archive\upload\xcourse_12.png.pagespeed.ic.25NTcM097E.png" />
+    <Content Include="_archive\upload\xdevice_01.png.pagespeed.ic.v31CZTVqg0.png" />
+    <Content Include="_archive\upload\xdevice_02.png.pagespeed.ic.w5TutKGgkN.png" />
+    <Content Include="_archive\upload\xparallax_01.jpg.pagespeed.ic.JPVsQrTu6o.jpg" />
+    <Content Include="_archive\upload\xparallax_02.jpg.pagespeed.ic.Sx1_qXOliB.jpg" />
+    <Content Include="_archive\upload\xservice_01.png.pagespeed.ic.2iuJZT3CaV.png" />
+    <Content Include="_archive\upload\xservice_02.png.pagespeed.ic.c6RThoxSWC.png" />
+    <Content Include="_archive\upload\xservice_03.png.pagespeed.ic.E_Ew4wn4ZP.png" />
+    <Content Include="_archive\upload\xservice_04.png.pagespeed.ic.NGi9jRXTXk.png" />
+    <Content Include="_archive\upload\xservice_05.png.pagespeed.ic.2iuJZT3CaV.png" />
+    <Content Include="_archive\upload\xservice_06.png.pagespeed.ic.o2Uniwq-y5.png" />
+    <Content Include="_archive\upload\xservice_07.png.pagespeed.ic.H-fRTeeP8u.png" />
+    <Content Include="_archive\upload\xservice_08.png.pagespeed.ic.76ek5JLaEY.png" />
+    <Content Include="_archive\upload\xservice_09.png.pagespeed.ic.FJcG938KC-.png" />
+    <Content Include="_archive\upload\xsingle_shop.jpg.pagespeed.ic.yMJhawG7Q-.jpg" />
+    <Content Include="_archive\upload\xsingle_shop_01.jpg.pagespeed.ic.L1-A5EffmO.jpg" />
+    <Content Include="_archive\upload\xsingle_shop_02.jpg.pagespeed.ic.Q5t1exZyYW.jpg" />
+    <Content Include="_archive\upload\xslider_new_01.jpg.pagespeed.ic.RgCY2ieSzC.jpg" />
+    <Content Include="_archive\upload\xslider_new_02.jpg.pagespeed.ic.QHr4wT-HDB.jpg" />
+    <Content Include="_archive\upload\xslider_new_03.jpg.pagespeed.ic.0dDeZb1yS7.jpg" />
+    <Content Include="_archive\upload\xstudent_01.png.pagespeed.ic.756JwMcqdq.png" />
+    <Content Include="_archive\upload\xstudent_02.png.pagespeed.ic.y-PM-y4pVj.png" />
+    <Content Include="_archive\upload\xstudent_03.png.pagespeed.ic.uCQY3WNMCJ.png" />
+    <Content Include="_archive\upload\xstudent_04.png.pagespeed.ic.e7uTdONUv0.png" />
+    <Content Include="_archive\upload\xstudent_05.png.pagespeed.ic.moTx3bMNF3.png" />
+    <Content Include="_archive\upload\xstudent_06.png.pagespeed.ic.M4STWuf1XS.png" />
+    <Content Include="_archive\upload\xteam_01.jpg.pagespeed.ic.uNKwi9Xmie.jpg" />
+    <Content Include="_archive\upload\xteam_02.jpg.pagespeed.ic.Foo3PN64df.jpg" />
+    <Content Include="_archive\upload\xteam_03.jpg.pagespeed.ic.Mw22RnI1eL.jpg" />
+    <Content Include="_archive\upload\xteam_04.jpg.pagespeed.ic.equz9NTtM1.jpg" />
+    <Content Include="Content\fonts\font-awesome-4.3.0\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Content\fonts\font-awesome-4.3.0\fonts\fontawesome-webfonte0a5.eot" />
+    <Content Include="Content\fonts\font-awesome-4.3.0\fonts\fontawesome-webfonte0a5.ttf" />
+    <Content Include="Content\fonts\font-awesome-4.3.0\fonts\fontawesome-webfonte0a5.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="Content\rs-plugin\font\revicons90c6.eot" />
+    <Content Include="Content\rs-plugin\font\revicons90c6.ttf" />
+    <Content Include="Content\rs-plugin\font\revicons90c6.woff" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\UsersAdmin\Index.cshtml" />
+    <Content Include="Views\UsersAdmin\Edit.cshtml" />
+    <Content Include="Views\UsersAdmin\Details.cshtml" />
+    <Content Include="Views\UsersAdmin\Delete.cshtml" />
+    <Content Include="Views\UsersAdmin\Create.cshtml" />
+    <Content Include="Views\RolesAdmin\Index.cshtml" />
+    <Content Include="Views\RolesAdmin\Edit.cshtml" />
+    <Content Include="Views\RolesAdmin\Details.cshtml" />
+    <Content Include="Views\RolesAdmin\Delete.cshtml" />
+    <Content Include="Views\RolesAdmin\Create.cshtml" />
+    <Content Include="Views\Account\DisplayEmail.cshtml" />
+    <Content Include="Views\Shared\_OriginalLayout.cshtml" />
+    <Content Include="_archive\fonts\font-awesome-4.3.0\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="_archive\fonts\font-awesome-4.3.0\fonts\fontawesome-webfonte0a5.eot" />
+    <Content Include="_archive\fonts\font-awesome-4.3.0\fonts\fontawesome-webfonte0a5.ttf" />
+    <Content Include="_archive\fonts\font-awesome-4.3.0\fonts\fontawesome-webfonte0a5.woff" />
+    <Content Include="_archive\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="_archive\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="_archive\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="_archive\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="_archive\rs-plugin\font\revicons90c6.eot" />
+    <Content Include="_archive\rs-plugin\font\revicons90c6.ttf" />
+    <Content Include="_archive\rs-plugin\font\revicons90c6.woff" />
+    <Content Include="Views\Home\EmailConfirmation.cshtml" />
+    <Content Include="Views\Home\Courses.cshtml" />
+    <Content Include="Views\Courses\Create.cshtml" />
+    <Content Include="Views\Courses\Delete.cshtml" />
+    <Content Include="Views\Courses\Details.cshtml" />
+    <Content Include="Views\Courses\Edit.cshtml" />
+    <Content Include="Views\Courses\Index.cshtml" />
+    <Content Include="Views\Lessons\Create.cshtml" />
+    <Content Include="Views\Lessons\Delete.cshtml" />
+    <Content Include="Views\Lessons\Details.cshtml" />
+    <Content Include="Views\Lessons\Edit.cshtml" />
+    <Content Include="Views\Lessons\Index.cshtml" />
+    <Content Include="Views\Shared\_PdfLesson.cshtml" />
+    <Content Include="Views\Shared\_YouTubeLesson.cshtml" />
+    <Content Include="Views\Menu\CourseComplete.cshtml" />
+    <Content Include="Views\Shared\_CourseList.cshtml" />
+    <Content Include="Views\Error\PageNotFound.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\lessonPdf\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LMS.DATA.EF\LMS.DATA.EF.csproj">
+      <Project>{8954e2ce-8075-4866-8c8b-1af766ddf549}</Project>
+      <Name>LMS.DATA.EF</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52426</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52426/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

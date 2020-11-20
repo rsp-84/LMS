@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- index939:56 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Welcome to A+ Inc. This is our internal application for employees to stay uptodate on the newest technology.">
+    <meta name="author" content="Ryan Pflugradt">
+    <meta name="keywords" content="LMS, Learning, Courses">
+    <title>@ViewBag.Title | A+ Inc. LMS</title>
+    <link rel="shortcut icon" href="~/content/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="~/content/rs-plugin/css/settings.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/content/font-awesome-4.3.0.css" />
+    <link rel="stylesheet" type="text/css" href="~/content/css/menu.css">
+    <link rel="stylesheet" type="text/css" href="~/content/css/carousel.css" />
+    <link rel="stylesheet" type="text/css" href="~/content/style.pWH5huNcWh.css" />
+    <link href="~/Content/css/custom.css" rel="stylesheet" />
+    @RenderSection("styles", required: false)
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-container">
+            <img src="~/content/images/site.gif" alt="" class="loader-site">
+        </div>
+    </div>
+    <div id="wrapper">
+        <div class="topbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-left">
+                        <p><i class="fa fa-graduation-cap"></i> Welcome to A+ Inc. | Learning Management Center</p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <ul class="list-inline">
+                            @*<li>
+                                    <a class="social" href="#"><i class="fa fa-facebook"></i></a>
+                                    <a class="social" href="#"><i class="fa fa-twitter"></i></a>
+                                    <a class="social" href="#"><i class="fa fa-google-plus"></i></a>
+                                    <a class="social" href="#"><i class="fa fa-linkedin"></i></a>
+                                </li>*@
+                            <li class="dropdown">
+                                @if (Request.IsAuthenticated)
+                                {
+                                    <a class="dropdown-toggle" href="#" data-toggle="dropdown"><i class="fa fa-unlock"></i> Manage & Log Off</a>
+                                }
+                                else
+                                {
+                                    <a class="dropdown-toggle" href="#" data-toggle="dropdown"><i class="fa fa-lock"></i> Login & Register</a>
+                                }
+                                <div class="dropdown-menu">
+                                    @Html.Partial("_LoginPartial")
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div><!-- TODO: Add URL Slugs -->
+        <header class="header">
+            <div class="container">
+                <div class="hovermenu ttmenu">
+                    <div class="navbar navbar-default" role="navigation">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="fa fa-bars"></span>
+                            </button>
+                            <div class="logo">
+                                <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img class="navbar__icon" src="~/content/images/xlogo.png" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <a href="@Url.Action("Index", "Home")">Home</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Courses")">Courses</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("About", "Home")">About</a>
+                                </li>
+
+                                <li>
+                                    <a href="@Url.Action("Contact", "Home")">Contact</a>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                @if (Request.IsAuthenticated && User.IsInRole("Employee"))
+                                {
+                                    {Html.RenderAction("CourseComplete", "Menu");}
+                                }
+                                else if (Request.IsAuthenticated)
+                                { }
+                                else
+                                {
+                                    <li><a class="btn btn-primary" href="@Url.Action("Register", "Account")"><i class="fa fa-sign-in"></i> Register Now</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        @RenderBody()
+
+        <section class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-left">
+                        <p><a target="_blank" href="https://www.linkedin.com/in/ryan-p-dev/">Ryan Pflugradt</a>, @DateTime.Now.Year</p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <ul class="list-inline">
+                            <!-- TODO: make sitemap or not? -->
+                            <li><a href="#">Sitemap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="~/content/js/jquery.min.js"></script>
+    <script src="~/content/js/bootstrap.min.pMrMbVAe_E.js"></script>
+    <script>eval(mod_pagespeed_gFRwwUbyVc);</script>
+    <script>eval(mod_pagespeed_rQwXk4AOUN);</script>
+    <script>eval(mod_pagespeed_U0OPgGhapl);</script>
+    <script src="~/content/js/carousel.nVhk-UfDsv.js"></script>
+    <script>eval(mod_pagespeed_6Ja02QZq$f);</script>
+    <script>eval(mod_pagespeed_KxQMf5X6rF);</script>
+    <script src="~/content/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script src="~/content/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    @RenderSection("scripts", required: false)
+    <script>jQuery(document).ready(function () { jQuery('.tp-banner').show().revolution({ dottedOverlay: "none", delay: 16000, startwidth: 1170, startheight: 620, hideThumbs: 200, thumbWidth: 100, thumbHeight: 50, thumbAmount: 5, navigationType: "none", navigationArrows: "solo", navigationStyle: "preview4", touchenabled: "on", onHoverStop: "on", swipe_velocity: 0.7, swipe_min_touches: 1, swipe_max_touches: 1, drag_block_vertical: false, parallax: "mouse", parallaxBgFreeze: "on", parallaxLevels: [10, 7, 4, 3, 2, 5, 4, 3, 2, 1], parallaxDisableOnMobile: "off", keyboardNavigation: "off", navigationHAlign: "center", navigationVAlign: "bottom", navigationHOffset: 0, navigationVOffset: 20, soloArrowLeftHalign: "left", soloArrowLeftValign: "center", soloArrowLeftHOffset: 20, soloArrowLeftVOffset: 0, soloArrowRightHalign: "right", soloArrowRightValign: "center", soloArrowRightHOffset: 20, soloArrowRightVOffset: 0, shadow: 0, fullWidth: "on", fullScreen: "off", spinner: "spinner4", stopLoop: "off", stopAfterLoops: -1, stopAtSlide: -1, shuffle: "off", autoHeight: "off", forceFullWidth: "off", hideThumbsOnMobile: "off", hideNavDelayOnMobile: 1500, hideBulletsOnMobile: "off", hideArrowsOnMobile: "off", hideThumbsUnderResolution: 0, hideSliderAtLimit: 0, hideCaptionAtLimit: 0, hideAllCaptionAtLilmit: 0, startWithSlide: 0, fullScreenOffsetContainer: "" }); });</script>
+    <script>
+        $(".navbar-collapse ul li a").each(function () {
+            var fullAnchor = $(this).attr("href");
+
+
+            var aController = fullAnchor.split("/");
+
+
+            var fullPath = (window.location.pathname + location.search).substr(1);
+
+
+            var pController = fullPath.split("/");
+
+
+            if (aController[1] == pController[0]) {
+                $(this).addClass("active");
+            }
+
+            if (aController[1] == "Home" && window.location.pathname != fullAnchor) {
+                $(this).removeClass()
+            }
+        });
+    </script>
+</body>
+<!-- index939:57 GMT -->
+</html>

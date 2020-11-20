@@ -1,0 +1,58 @@
+﻿@model LMS.UI.MVC.Models.ContactViewModel
+
+@{
+    ViewBag.Title = "Contact";
+}
+
+<article id="contact" class="map-section">
+    <div id="map" class="wow slideInUp"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1841.460499279398!2d-94.58703115154765!3d39.08472124859783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87c0f03f9cb6bbc5%3A0x1746a6418d59c7dd!2sUnion%20Station%20Kansas%20City!5e0!3m2!1sen!2sus!4v1605228915300!5m2!1sen!2sus" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></div>
+</article>
+<section class="white section">
+    <div class="container">
+        <div class="row contact-wrapper">
+            <div class="col-md-9 col-sm-9 col-xs-12 content-widget">
+                <div class="widget-title">
+                    <h4>Contact Form</h4>
+                    <hr>
+                </div>
+                <div id="contact_form" class="contact_form row">
+                    <div id="message"></div>
+                    <form id="contactform" action="/Home/Contact" method="post">
+
+                        @Html.AntiForgeryToken()
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Name *" value="@if (Model != null) { @Model.Name; }">
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            <input type="text" name="email" id="email" class="form-control" placeholder="Email *" value="@if (Model != null) { @Model.Email; }">
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            <input type="text" name="subject" id="subject" class="form-control" placeholder="Subject *" value="@if (Model != null) { @Model.Subject; }">
+                            @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <textarea class="form-control" name="message" id="message" rows="6" style="resize: none;" placeholder="Message">@if (Model != null) { @Model.Message; }</textarea>
+                            @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                            <button type="submit" id="submit" class="btn btn-primary btn-block">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="contact-page__contact-details col-md-3 col-sm-3 col-xs-12 content-widget">
+                <div class="widget-title">
+                    <h4>Contact Details</h4>
+                    <hr>
+                </div>
+                <div class="contact-list">
+                    <ul class="contact-details">
+                        <li><i class="fa fa-link"></i> <a target="_blank" href="lms.RyanPflugradt.Com">lms.RyanPflugradt.com</a></li>
+                        <li><i class="fa fa-envelope"></i> <a href="mailto:info@RyanPflugradt.com">info@RyanPflugradt.com</a></li>
+                        <li><i class="fa fa-phone"></i> (816) 555-4235</li>
+                        <li><i class="fa fa-fax"></i> (816) 555-4233</li>
+                        <li><i class="fa fa-home"></i>  30 W Pershing Rd, Kansas City, MO 64108</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

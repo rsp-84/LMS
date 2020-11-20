@@ -1,0 +1,206 @@
+﻿@model LMS.DATA.EF.Lesson
+
+@{
+    ViewBag.Title = "Details";
+    string docType = String.Empty;
+}
+
+<section class="grey section">
+    <div class="container">
+        <div class="row">
+            <div id="content" class="col-md-12 col-sm-12 col-xs-12">
+                <div class="blog-wrapper">
+                    <div class="row second-bread">
+                        <div class="col-md-6 text-left">
+                            <h1>@Model.Course.CourseName</h1>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <div class="bread">
+                                <ol class="breadcrumb">
+                                    <li><a href="@Url.Action("Index", "Courses")">Courses</a></li>
+                                    <li><a href="@Url.Action("Details", "Courses", new { id = Model.Course.CourseId })">Course Info</a></li>
+                                    <li>@Model.LessonTitle</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-wrapper">
+                    <div class="blog-image">
+                        @if (Model.PdfFilename != null)
+                        {
+                            @Html.Partial("_PdfLesson", Model)
+                        }
+                        @if (Model.VideoURL != null)
+                        {
+                            @Html.Partial("_YouTubeLesson", Model)
+                        }
+
+                        <!-- TODO: Delete commended code -->
+                        @*<a href="single.html" title=""><img src="~/content/upload/xslider_new_01.jpg.pagespeed.ic.RgCY2ieSzC.jpg" alt="" class="img-responsive"></a>*@
+                    </div>
+                    <div class="blog-desc">
+                        <p>
+                            @Model.Introduction
+                        </p>
+                        <p>
+                            @if (Model.LessonViews.Where(x => x.LessonId == Model.LessonId && ViewBag.CurrentUserId == x.UserId).Count() < 1)
+                            {
+                                using (Html.BeginForm("Details", "Lessons"))
+                                {
+                                    <a href="@Url.Action("Completed", "Lessons", new { id = Model.LessonId })" class="btn btn-primary" data-form-method="post">Complete Lesson <i class="fa fa-arrow-right"></i></a>
+                                }
+                            }
+                            <span class="text-danger">@ViewBag.AlreadyCompletedMessage</span>
+                        </p>
+                        <hr />
+                        <div class="course-table">
+                            <h4>Course Lessons</h4>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Lesson Title</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.Course.CourseCompletions.Where(x => x.CourseId == Model.CourseId && x.UserId == ViewBag.CurrentUserId).Count() > 0)
+                                    {
+                                        foreach (var lesson in Model.Course.Lessons)
+                                        {
+                                            if (lesson.VideoURL != null)
+                                            {
+                                                docType = "fa-youtube-play";
+                                            }
+                                            else if (lesson.PdfFilename != null)
+                                            {
+                                                docType = "fa-file-pdf-o";
+                                            }
+                                            <tr>
+                                                <td><i class="fa @docType"></i></td>
+                                                <td><a href="@Url.Action("Details", "Lessons", new { id = lesson.LessonId })"><span class="btn btn-sm btn-primary">Review</span> @lesson.LessonTitle</a></td>
+                                                <td><i class="fa  @(lesson.LessonViews.Where(x => x.LessonId == lesson.LessonId && ViewBag.CurrentUserId == x.UserId).Count() < 1 ? "fa-close" : "fa-check")"></i></td>
+                                            </tr>
+
+                                            docType = string.Empty;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        foreach (var lesson in Model.Course.Lessons)
+                                        {
+                                            if (lesson.VideoURL != null)
+                                            {
+                                                docType = "fa-youtube-play";
+                                            }
+                                            else if (lesson.PdfFilename != null)
+                                            {
+                                                docType = "fa-file-pdf-o";
+                                            }
+                                            <tr>
+                                                <td><i class="fa @docType"></i></td>
+                                                <td><a href="@Url.Action("Details", "Lessons", new { id = lesson.LessonId })">@lesson.LessonTitle</a></td>
+                                                <td><i class="fa  @(lesson.LessonViews.Where(x => x.LessonId == lesson.LessonId && ViewBag.CurrentUserId == x.UserId).Count() < 1 ? "fa-close" : "fa-check")"></i></td>
+                                            </tr>
+
+                                            docType = string.Empty;
+                                        }
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts
+{
+    <script>
+        $("a[data-form-method='post']").click(function (event) {
+            event.preventDefault();
+            var element = $(this);
+            var action = element.attr("href");
+            element.closest("form").each(function () {
+                var form = $(this);
+                form.attr("action", action);
+                form.submit();
+            });
+        });
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+@* Save for now *@
+@*<h2>Details</h2>
+
+    <div>
+        <h4>Lesson</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.LessonTitle)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LessonTitle)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Introduction)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Introduction)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.VideoURL)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.VideoURL)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PdfFilename)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PdfFilename)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsActive)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Course.CourseName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Course.CourseName)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.LessonId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

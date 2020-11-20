@@ -1,0 +1,55 @@
+﻿@model IEnumerable<LMS.DATA.EF.Course>
+
+@foreach (var course in Model)
+{
+    <!-- TODO: Fix category format, add space -->
+    if (course.CourseCompletions.Where(x => x.CourseId == course.CourseId && x.UserId == ViewBag.CurrentUser).Count() > 0)
+    {
+        <div class="item @course.Category Completed">
+            <div class="shop-item-list entry">
+                <div class="">
+                    <img src="~/content/images/courses/@course.CourseImg" alt="@course.CourseName" class="class-list__image--size image__greyscale--100">
+                    @*<div class="magnifier">
+                        </div>*@
+                </div>
+                <div class="shop-item-title clearfix">
+                    <h4><a href="@Url.Action("Details", "Courses", new { id = course.CourseId })" alt="Completed: review only"><span class="text-muted">@course.CourseName</span> <i class="fa fa-check-square-o" style="color: green;"></i></a></h4>
+                    <div class="shopmeta">
+                        <span class="pull-left">Category</span>
+                        <div class="rating pull-right">
+                            <span class="text-muted">@course.Category</span>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="visible-buttons">
+                        <a alt="Completed: review only" href="@Url.Action("Details", "Courses", new { id = course.CourseId })"><span class="fa fa-search"></span></a>
+                    </div>*@
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="item @course.Category NotCompleted">
+            <div class="shop-item-list entry">
+                <div class="">
+                    <img src="~/content/images/courses/@course.CourseImg" alt="@course.CourseName" class="class-list__image--size">
+                    <div class="magnifier">
+                    </div>
+                </div>
+                <div class="shop-item-title clearfix">
+                    <h4><a href="@Url.Action("Details", "Courses", new { id = course.CourseId })">@course.CourseName</a></h4>
+                    <div class="shopmeta">
+                        <span class="pull-left">Category</span>
+                        <div class="rating pull-right">
+                            <span>@course.Category</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="visible-buttons">
+                    <a title="Read More" href="@Url.Action("Details", "Courses", new { id = course.CourseId })"><span class="fa fa-search"></span></a>
+                </div>
+            </div>
+        </div>
+    }
+
+}

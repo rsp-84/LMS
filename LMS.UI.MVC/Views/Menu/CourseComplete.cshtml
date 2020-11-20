@@ -1,0 +1,46 @@
+﻿@model LMS.DATA.EF.UserDetail
+
+@{
+    Layout = null;
+
+    string color = "success";
+}
+
+@if (ViewBag.CompletedNum < 3)
+{
+    color = "danger";
+}
+else if (ViewBag.CompletedNum > 2 && ViewBag.CompletedNum < 5)
+{
+    color = "warning";
+}
+
+<a class="btn btn-@color">@ViewBag.CompletedNum @($"Course{( ViewBag.CompletedNum > 1 || ViewBag.CompletedNum == 0 ? "s" : "" )} Completed This Year")</a>
+
+@* Keep for now *@
+@*<div>
+        <h4>UserDetail</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

@@ -1,0 +1,43 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-title">
+            <h4>Welcome, @User.Identity.GetUserName()</h4>
+            <hr>
+        </div>
+        <p>
+            @Html.ActionLink("Manage your account", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "btn btn-primary" })
+        </p>
+        <br />
+        <p>
+            <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-primary">Log off</a>
+        </p>
+
+    }
+}
+else
+{
+    using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-title">
+            <h4>Login Area</h4>
+            <hr>
+        </div>
+        <input class="form-control" data-val="true" data-val-email="The Email field is not a valid e-mail address." data-val-required="The Email field is required." id="Email" name="Email" type="text" value="" placeholder="Email">
+        <div class="formpassword">
+            <input class="form-control" data-val="true" data-val-required="The Password field is required." id="Password" name="Password" type="password" placeholder="Password">
+        </div>
+        <input data-val="true" data-val-required="The Remember me? field is required." id="RememberMe" name="RememberMe" type="checkbox" value="true"><input name="RememberMe" type="hidden" value="false">
+        <label for="RememberMe">Remember me?</label>
+        <div class="clearfix"></div>
+        <button type="submit" class="btn btn-block btn-primary">Login</button>
+        <hr>
+        <h4><a href="@Url.Action("Register", "Account")">Create an Account</a></h4>
+    }
+}

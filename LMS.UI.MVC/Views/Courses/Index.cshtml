@@ -1,0 +1,110 @@
+﻿@model IEnumerable<LMS.DATA.EF.Course>
+
+@{
+    ViewBag.Title = "Courses";
+}
+
+<section class="grey page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-left">
+                <h1>Course List</h1>
+            </div>
+            <div class="col-md-6 text-right">
+                <div class="bread">
+                    <ol class="breadcrumb">
+                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                        <li class="active">Courses</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="white section course-list__grid">
+    <div class="container">
+        <div id="filters" class="filters-dropdown">
+            <ul class="option-set" data-option-key="filter">
+                <li><a href="#filter" class="selected" data-option-value="*"><i class="fa fa-filter"></i> All Courses</a></li>
+                <li><a href="#filter" data-option-value=".FrontEnd">Front End</a></li>
+                <li><a href="#filter" data-option-value=".MiddleTier">Middle Tier</a></li>
+                <li><a href="#filter" data-option-value=".Database">Database</a>&nbsp;&nbsp;&nbsp;&#124;</li>
+                <li><a href="#filter" data-option-value=".Completed">Completed</a></li>
+                <li><a href="#filter" data-option-value=".NotCompleted">Not Completed</a></li>
+            </ul>
+        </div>
+        <div class="portfolio course-list">
+            @Html.Partial("_CourseList", Model)
+        </div>
+    </div>
+</section>
+
+@section scripts
+{
+    <script src="~/Content/js/isotope.js"></script>
+    <script type="text/javascript">
+        (function ($) { "use strict"; $(window).load(function () { $('.portfolio').isotope({ itemSelector: '.item', layoutMode: 'fitRows' }); $('#filters a.selected').trigger("click"); }); $('#filters a').click(function (e) { e.preventDefault(); var selector = $(this).attr('data-option-value'); $('.portfolio').isotope({ filter: selector }); $(this).parents('ul').find('a').removeClass('selected'); $(this).addClass('selected'); }); jQuery(document).ready(function ($) { $(window).resize(); $Filter.find('a').click(function () { $Filter.find('ul li').not($(this)).removeClass('active'); $(this).parent('li').addClass('active'); }); }); })(jQuery);
+    </script>
+}
+
+
+
+
+
+
+<!-- TODO: Clean up saved code later-->
+@* Old code for index save for now *@
+@*<div class="container">
+        <h2>Index</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CourseName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CourseDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CourseImg)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CourseName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CourseDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CourseImg)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CourseId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CourseId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CourseId })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>*@

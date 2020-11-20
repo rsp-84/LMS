@@ -1,0 +1,16 @@
+﻿@model LMS.UI.MVC.Models.ContactViewModel
+
+@{
+    ViewBag.Title = "Email Confirmation";
+}
+
+<section class="email__confirmation-screen white section">
+    <div class="container">
+        <div class="row contact-wrapper">
+            <h1>@ViewBag.Title</h1>
+            <p class="lead">
+                @Model.Name, your message was successfully sent. We will reply as soon as possible, usually within 24 hours.
+            </p>
+        </div>
+    </div>
+</section>

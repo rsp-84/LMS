@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1169
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.UI.MVC", "LMS.UI.MVC\LMS.UI.MVC.csproj", "{1C40D5B8-588E-41B7-BEB5-966D09F79472}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.DATA.EF", "LMS.DATA.EF\LMS.DATA.EF.csproj", "{8954E2CE-8075-4866-8C8B-1AF766DDF549}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C40D5B8-588E-41B7-BEB5-966D09F79472}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C40D5B8-588E-41B7-BEB5-966D09F79472}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C40D5B8-588E-41B7-BEB5-966D09F79472}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C40D5B8-588E-41B7-BEB5-966D09F79472}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8954E2CE-8075-4866-8C8B-1AF766DDF549}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8954E2CE-8075-4866-8C8B-1AF766DDF549}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8954E2CE-8075-4866-8C8B-1AF766DDF549}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8954E2CE-8075-4866-8C8B-1AF766DDF549}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {780DEECC-F214-4E78-813C-C91E40C4F3A0}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,204 @@
+﻿@model LMS.DATA.EF.Course
+
+@{
+    ViewBag.Title = "Details";
+    string docType = String.Empty;
+}
+
+<section class="grey page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-left">
+                <h1>@Model.CourseName</h1>
+            </div>
+            <div class="col-md-6 text-right">
+                <div class="bread">
+                    <ol class="breadcrumb">
+                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                        <li><a href="@Url.Action("Index", "Courses")">Courses</a></li>
+                        <li class="active">@Model.CourseName</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="white section">
+    <div class="container">
+        <div class="row">
+            <div id="course-left-sidebar" class="col-md-4">
+                <div class="course-image-widget">
+                    <img src="~/content/images/courses/@Model.CourseImg" alt="@Model.CourseName" class="img-responsive">
+                </div>
+                <div class="course-meta">
+                    <p class="course-category">Class : @Model.CourseName</p>
+                    <hr>
+                    <p class="course-forum">Category : @Model.Category</p><!-- TODO: Add a space -->
+                </div>
+                <div class="course-button">
+                    @if (Model.CourseCompletions.Where(x => x.CourseId == Model.CourseId && x.UserId == ViewBag.CurrentUserId).Count() < 1)
+                    {
+                        <a href="" id="takeThisCourse" class="btn btn-primary btn-block">TAKE THIS COURSE</a>
+                    }
+                </div>
+            </div>
+            <div id="course-content" class="col-md-8">
+                <div class="course-description">
+                    <h3 class="course-title">@Model.CourseName</h3>
+                    <p>@Model.CourseDescription</p><!-- TODO: add a larger description in DB -->
+                </div>
+                <div class="course-table">
+                    <h4>Course Lessons</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Lesson Title</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.CourseCompletions.Where(x => x.CourseId == Model.CourseId && x.UserId == ViewBag.CurrentUserId).Count() > 0)
+                            {
+                                foreach (var lesson in Model.Lessons)
+                                {
+                                    if (lesson.VideoURL != null)
+                                    {
+                                        docType = "fa-youtube-play";
+                                    }
+                                    else if (lesson.PdfFilename != null)
+                                    {
+                                        docType = "fa-file-pdf-o";
+                                    }
+                                    <tr>
+                                        <td><i class="fa @docType"></i></td>
+                                        <td><a href="@Url.Action("Details", "Lessons", new { id = lesson.LessonId })"><span class="btn btn-sm btn-primary">Review</span> @lesson.LessonTitle</a></td>
+                                        <td><i class="fa  @(lesson.LessonViews.Where(x => x.LessonId == lesson.LessonId && ViewBag.CurrentUserId == x.UserId).Count() < 1 ? "fa-close" : "fa-check")"></i></td>
+                                    </tr>
+
+                                    docType = string.Empty;
+                                }
+                            }
+                            else
+                            {
+                                foreach (var lesson in Model.Lessons)
+                                {
+                                    if (lesson.VideoURL != null)
+                                    {
+                                        docType = "fa-youtube-play";
+                                    }
+                                    else if (lesson.PdfFilename != null)
+                                    {
+                                        docType = "fa-file-pdf-o";
+                                    }
+                                    <tr>
+                                        <td><i class="fa @docType"></i></td>
+                                        <td><a href="@Url.Action("Details", "Lessons", new { id = lesson.LessonId })" class="takeThisCourseClass">@lesson.LessonTitle</a></td>
+                                        <td><i class="fa  @(lesson.LessonViews.Where(x => x.LessonId == lesson.LessonId && ViewBag.CurrentUserId == x.UserId).Count() < 1 ? "fa-close" : "fa-check")"></i></td>
+                                    </tr>
+
+                                    docType = string.Empty;
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+                <hr class="invis">
+                <p>
+                    <a href="@Url.Action("Contact", "Home")" class="btn btn-default btn-block">
+                        Have Questions? Contact Us Now
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts
+{
+    <script>
+        window.addEventListener("load", function () {
+            var takeThisCourse = document.getElementById("takeThisCourse");
+            var takeThisCourseClass = document.querySelector(".takeThisCourseClass").getAttribute("href");
+
+            takeThisCourse.addEventListener("click", (e) => {
+                e.preventDefault();
+                window.location.href = takeThisCourseClass;
+            });
+        });
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- TODO: Clean up saved code later-->
+@* Old code for index save for now *@
+@*<h2>Details</h2>
+
+    <div>
+        <h4>Course</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CourseName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CourseDescription)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CourseDescription)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsActive)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Category)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Category)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CourseImg)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CourseImg)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.CourseId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@
