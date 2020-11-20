@@ -15,7 +15,7 @@ else if (ViewBag.CompletedNum > 2 && ViewBag.CompletedNum < 5)
     color = "warning";
 }
 
-<a class="btn btn-@color">@ViewBag.CompletedNum @($"Course{( ViewBag.CompletedNum > 1 || ViewBag.CompletedNum == 0 ? "s" : "" )} Completed This Year")</a>
+<a href="@Url.Action("Employee", "Reports")" class="btn btn-@color">@ViewBag.CompletedNum @($"Course{( ViewBag.CompletedNum > 1 || ViewBag.CompletedNum == 0 ? "s" : "" )} Completed This Year")</a>
 
 @* Keep for now *@
 @*<div>
