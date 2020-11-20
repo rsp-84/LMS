@@ -26,17 +26,15 @@
     <div class="container">
         <div class="row">
             <div id="course-left-sidebar" class="col-md-3">
-                <div class="course-image-widget">
-                    <img src="~/content/upload/xstudent_05.png.pagespeed.ic.moTx3bMNF3.png" alt="" class="img-responsive">
+                <div class="section-title employee-report__name">
+                    <h4>@ViewBag.EmployeeName</h4>
                 </div>
                 <div class="course-meta">
-                    <p>JOHN DEO</p>
+                    <p class="employee-report__reports-to--spacing">Reports To <span class="label label-primary">@( ViewBag.ManagerName == null ? "Not Assigned" : ViewBag.ManagerName)</span></p>
                     <hr>
-                    <p>My Profile <small><a href="course-account.html">Edit</a></small></p>
+                    <p>Completed Courses <small class="label label-primary">@ViewBag.CourseCompleteCount</small></p>
                     <hr>
-                    <p>Completed Courses <small class="label label-primary">12</small></p>
-                    <hr>
-                    <p>Completed Lessons <small class="label label-primary">40</small></p>
+                    <p>Completed Lessons <small class="label label-primary">@ViewBag.LessonCompleteCount</small></p>
                     <hr>
                 </div>
             </div>

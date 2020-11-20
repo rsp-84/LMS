@@ -31,7 +31,11 @@ namespace LMS.UI.MVC.Controllers
                 return HttpNotFound();
             }
             ViewBag.EmployeeName = $"{userDetail.FirstName} {userDetail.LastName}";
-            ViewBag.ManagerName = $"{userDetail.UserDetail1.FirstName} {userDetail.UserDetail1.FirstName}";
+            if (userDetail.ReportsTo != null)
+            {
+                ViewBag.ManagerName = $"{userDetail.UserDetail1.FirstName} {userDetail.UserDetail1.LastName}";
+            }
+
 
             //List for all view info----------
             List<EmployeeReportsViewModel> employeeReportsVM = new List<EmployeeReportsViewModel>();
@@ -41,9 +45,13 @@ namespace LMS.UI.MVC.Controllers
                                   where completedLesson.LessonId == completedLesson.Lesson.LessonId && userId == completedLesson.UserId
                                   select new { completedLesson.Lesson.LessonTitle, completedLesson.DateViewed }).ToList();
 
+            ViewBag.LessonCompleteCount = userLessonData.Count;
+
             var userCourseData = (from completedCourse in db.CourseCompletions
                                   where completedCourse.CourseId == completedCourse.Course.CourseId && userId == completedCourse.UserId
                                   select new { completedCourse.Course.CourseName, completedCourse.Course.CourseImg, completedCourse.Course.Category, completedCourse.DateCompleted }).ToList();
+
+            ViewBag.CourseCompleteCount = userCourseData.Count;
 
             //Build ViewModel----------
             foreach (var item in userLessonData)
