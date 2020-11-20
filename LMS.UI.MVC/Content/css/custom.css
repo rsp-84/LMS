@@ -55,3 +55,17 @@ a[alt]:hover:after {
     border-bottom: 1px dotted #666;
     text-align: left;
 }
+
+.employee-report__name {
+    margin-bottom: 0;
+}
+
+.employee-report__reports-to--spacing {
+    display: flex !important;
+    justify-content: space-between;
+    padding-right: 0 !important;
+}
+
+.course-meta .label-primary {
+    width: auto;
+}

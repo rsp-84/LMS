@@ -1,0 +1,103 @@
+﻿@model IEnumerable<LMS.UI.MVC.Models.EmployeeReportsViewModel>
+
+@{
+    ViewBag.Title = "Employee";
+}
+
+<section class="grey page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-left">
+                <h1>Employee Report</h1>
+            </div>
+            <div class="col-md-6 text-right">
+                <div class="bread">
+                    <ol class="breadcrumb">
+                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                        <li><a href="@Url.Action("Index", "Courses")">Courses</a></li>
+                        <li class="active">Employee Report</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="white section">
+    <div class="container">
+        <div class="row">
+            <div id="course-left-sidebar" class="col-md-3">
+                <div class="section-title employee-report__name">
+                    <h4>@ViewBag.EmployeeName</h4>
+                </div>
+                <div class="course-meta">
+                    <p class="employee-report__reports-to--spacing">Reports To <span class="label label-primary">@( ViewBag.ManagerName == null ? "Not Assigned" : ViewBag.ManagerName)</span></p>
+                    <hr>
+                    <p>Completed Courses <small class="label label-primary">@ViewBag.CourseCompleteCount</small></p>
+                    <hr>
+                    <p>Completed Lessons <small class="label label-primary">@ViewBag.LessonCompleteCount</small></p>
+                    <hr>
+                </div>
+            </div>
+            <div id="course-content" class="col-md-9">
+                <div class="course-description">
+                    <h3 class="course-title">Your Progress</h3>
+                    <p>Each employee is responsible for completing six courses per calendar year to stay current on continuing education. It is essential to keep up-to-date on the technologies we use and get a glimpse at new technologies.</p>
+                    <p><a href="@Url.Action("Index", "Courses")" class="btn btn-primary">Take A Course <i class="fa fa-arrow-right"></i></a></p>
+                    <div class="row">
+                        <div class="achievement-wrapper">
+                            <div class="course-table">
+                                <h4>Completed Courses</h4>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Category</th>
+                                            <th>Date Completed</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var course in Model)
+                                        {
+                                            if (course.CourseName != null)
+                                            {
+                                                <tr>
+                                                    <td>@course.CourseName</td>
+                                                    <td>@course.CouseCat</td>
+                                                    <td>@course.CourseCompletedDate.ToString("MM/dd/yyyy @ hh:mm tt")</td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="course-table">
+                                <h4>Completed Lessons</h4>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Date Completed</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var lesson in Model)
+                                        {
+                                            if (lesson.CourseName == null)
+                                            {
+                                                <tr>
+                                                    <td>@lesson.LessonTitle</td>
+                                                    <td>@lesson.LessonCompletedDate.ToString("MM/dd/yyyy @ hh:mm tt")</td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
