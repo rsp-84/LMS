@@ -1,7 +1,7 @@
 ﻿@model LMS.DATA.EF.UserDetail
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Profile";
 }
 
 
@@ -16,6 +16,7 @@
                     <ol class="breadcrumb">
                         <li><a href="@Url.Action("Index", "Home")">Home</a></li>
                         <li><a href="@Url.Action("Index", "Courses")">Courses</a></li>
+                        <li><a href="@Url.Action("Employee", "Reports")">Employee Report</a></li>
                         <li class="active">Profile</li>
                     </ol>
                 </div>
@@ -46,7 +47,7 @@
             </div>
             <div id="course-content" class="col-md-9">
                 <div class="course-description">
-                    <h3 class="course-title">Edit Profile</h3>
+                    <h3 class="course-title">Profile</h3>
                     <p>Review and edit your profile. Please make sure to upload a current photo. The photo should be an appropriate business picture of the upper portion of your body or a headshot.</p>
                     <div class="edit-profile">
                         <div class="form-group">
@@ -82,6 +83,7 @@
                                 </p>
                             </div>
                             <button type="submit" class="btn btn-default">Save Changes</button>
+                            <a href="@Url.Action("Employee", "Reports")" class="btn btn-primary pull-right">Employee Report</a>
                         }
                     </div>
                 </div>
