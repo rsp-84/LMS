@@ -547,7 +547,7 @@
     <Content Include="Views\Lessons\Index.cshtml" />
     <Content Include="Views\Shared\_PdfLesson.cshtml" />
     <Content Include="Views\Shared\_YouTubeLesson.cshtml" />
-    <Content Include="Views\Menu\CourseComplete.cshtml" />
+    <Content Include="Views\Menu\EmployeeNavMenu.cshtml" />
     <Content Include="Views\Shared\_CourseList.cshtml" />
     <Content Include="Views\Error\PageNotFound.cshtml" />
     <Content Include="Views\Reports\Employee.cshtml" />

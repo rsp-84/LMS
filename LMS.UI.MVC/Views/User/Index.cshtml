@@ -28,16 +28,18 @@
     <div class="container">
         <div class="row">
             <div id="course-left-sidebar" class="col-md-3">
-                @if (Model.UserPhoto != null)
-                {
-                    <div class="course-image-widget">
-                        <img src="~/content/images/user/@Model.UserPhoto" alt="@ViewBag.Name" class="img-responsive">
-                    </div>
-                }
-                else
-                {
-                    <h4>Please add a photo to your profile!</h4>
-                }
+                <div class="section-title employee-report__name">
+                    @if (Model.UserPhoto != null)
+                    {
+                        <div class="course-image-widget">
+                            <img src="~/content/images/user/@Model.UserPhoto" alt="@ViewBag.Name" class="img-responsive">
+                        </div>
+                    }
+                    else
+                    {
+                        <h4>Please add a photo to your profile!</h4>
+                    }
+                </div>
                 <div class="course-meta">
                     <p>@ViewBag.Name</p>
                     <hr>
@@ -48,7 +50,7 @@
             <div id="course-content" class="col-md-9">
                 <div class="course-description">
                     <h3 class="course-title">Profile</h3>
-                    <p>Review and edit your profile. Please make sure to upload a current photo. The photo should be an appropriate business picture of the upper portion of your body or a headshot.</p>
+                    <p>Review your profile. Please make sure to upload a current photo. The photo should be an appropriate business picture of the upper portion of your body or a headshot.</p>
                     <div class="edit-profile">
                         <div class="form-group">
                             <label>First / Last Name</label>

@@ -98,7 +98,7 @@
                             <ul class="nav navbar-nav navbar-right">
                                 @if (Request.IsAuthenticated && User.IsInRole("Employee"))
                                 {
-                                    {Html.RenderAction("CourseComplete", "Menu");}
+                                    {Html.RenderAction("EmployeeNavMenu", "Menu");}
                                 }
                                 else if (Request.IsAuthenticated)
                                 { }
