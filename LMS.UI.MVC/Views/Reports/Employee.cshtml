@@ -4,6 +4,11 @@
     ViewBag.Title = "Employee";
 }
 
+@section styles
+{
+    <link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+}
+
 <section class="grey page-title">
     <div class="container">
         <div class="row">
@@ -56,54 +61,67 @@
                     <p><a href="@Url.Action("Index", "Courses")" class="btn btn-primary">Take A Course <i class="fa fa-arrow-right"></i></a></p>
                     <div class="row">
                         <div class="achievement-wrapper">
-                            <div class="course-table">
-                                <h4>Completed Courses</h4>
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Category</th>
-                                            <th>Date Completed</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var course in Model)
-                                        {
-                                            if (course.CourseName != null)
-                                            {
-                                                <tr>
-                                                    <td>@course.CourseName</td>
-                                                    <td>@course.CouseCat</td>
-                                                    <td>@course.CourseCompletedDate.ToString("MM/dd/yyyy @ hh:mm tt")</td>
-                                                </tr>
-                                            }
-                                        }
-                                    </tbody>
-                                </table>
+                            <div class="widget-title">
+                                <h4>View Completed</h4>
+                                <hr>
                             </div>
-
-                            <div class="course-table">
-                                <h4>Completed Lessons</h4>
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Date Completed</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var lesson in Model)
-                                        {
-                                            if (lesson.CourseName == null)
-                                            {
-                                                <tr>
-                                                    <td>@lesson.LessonTitle</td>
-                                                    <td>@lesson.LessonCompletedDate.ToString("MM/dd/yyyy @ hh:mm tt")</td>
-                                                </tr>
-                                            }
-                                        }
-                                    </tbody>
-                                </table>
+                            <div class="tabbed-widget">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a data-toggle="tab" href="#home">Courses</a></li>
+                                    <li><a data-toggle="tab" href="#menu1">Lessons</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div id="home" class="tab-pane fade in active">
+                                        <p>
+                                            <table id="completedCourseTable" class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Category</th>
+                                                        <th>Date Completed</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var course in Model)
+                                                    {
+                                                        if (course.CourseName != null)
+                                                        {
+                                                            <tr>
+                                                                <td>@course.CourseName</td>
+                                                                <td>@course.CouseCat</td>
+                                                                <td>@course.CourseCompletedDate.ToString("MM/dd/yyyy @ hh:mm tt")</td>
+                                                            </tr>
+                                                        }
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </p>
+                                    </div>
+                                    <div id="menu1" class="tab-pane fade">
+                                        <p>
+                                            <table id="completedLessonTable" class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Date Completed</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var lesson in Model)
+                                                    {
+                                                        if (lesson.CourseName == null)
+                                                        {
+                                                            <tr>
+                                                                <td>@lesson.LessonTitle</td>
+                                                                <td>@lesson.LessonCompletedDate.ToString("MM/dd/yyyy @ hh:mm tt")</td>
+                                                            </tr>
+                                                        }
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -112,3 +130,17 @@
         </div>
 </section>
 
+@section scripts
+{
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#completedCourseTable').DataTable({
+                "order": [[2, "desc"]]
+            });
+            $('#completedLessonTable').DataTable({
+                "order": [[1, "desc"]]
+            });
+        });
+    </script>
+}
