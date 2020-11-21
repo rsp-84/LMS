@@ -10,5 +10,6 @@ namespace LMS.UI.MVC.Models
         public string EmployeeFirstName { get; set; }
         public string EmployeeLastName { get; set; }
         public int numCoursesCompletedYTD { get; set; }
+        public int numLessonsCompletedYTD { get; set; }
     }
 }

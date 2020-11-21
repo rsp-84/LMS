@@ -93,8 +93,18 @@ namespace LMS.UI.MVC.Controllers
         [Authorize(Roles = "Manager")]
         public ActionResult Manager()
         {
+            //Logged in manager
+            var loggedInManager = User.Identity.GetUserId();
 
-            return View();
+            //get data
+            var allAssignedEmployees = (from employees in db.UserDetails
+                                       where employees.ReportsTo == loggedInManager
+                                       select new ManagerReportIndexViewModel { EmployeeFirstName = employees.FirstName, EmployeeLastName = employees.LastName, numCoursesCompletedYTD = employees.CourseCompletions.Count, numLessonsCompletedYTD = employees.LessonViews.Count }).ToList();
+
+            ViewBag.ManagerImg = db.UserDetails.Find(loggedInManager).UserPhoto;
+            ViewBag.ManagerName = $"{db.UserDetails.Find(loggedInManager).FirstName} {db.UserDetails.Find(loggedInManager).LastName}";
+
+            return View(allAssignedEmployees);
         }
 
         protected override void Dispose(bool disposing)
