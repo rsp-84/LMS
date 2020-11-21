@@ -80,6 +80,14 @@ namespace LMS.UI.MVC.Controllers
             return View(employeeReportsVM);
         }
 
+        // GET: Manager
+        [Authorize(Roles = "Manager")]
+        public ActionResult Manager()
+        {
+
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
