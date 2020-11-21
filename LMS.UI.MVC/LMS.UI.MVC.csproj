@@ -178,6 +178,7 @@
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -331,6 +332,7 @@
     <Content Include="ViewerJS\text_layer_builder.js" />
     <Content Include="ViewerJS\ui_utils.js" />
     <Content Include="ViewerJS\webodf.js" />
+    <Content Include="_archive\course-account.html" />
     <Content Include="_archive\course-filterable.html" />
     <Content Include="_archive\course-reports.html" />
     <Content Include="_archive\course-single.html" />
@@ -550,9 +552,15 @@
     <Content Include="Views\Error\PageNotFound.cshtml" />
     <Content Include="Views\Reports\Employee.cshtml" />
     <Content Include="Views\Reports\Manager.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\images\user\" />
     <Folder Include="Content\lessonPdf\" />
   </ItemGroup>
   <ItemGroup>

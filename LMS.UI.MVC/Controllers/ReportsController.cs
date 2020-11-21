@@ -31,6 +31,15 @@ namespace LMS.UI.MVC.Controllers
                 return HttpNotFound();
             }
             ViewBag.EmployeeName = $"{userDetail.FirstName} {userDetail.LastName}";
+            if (userDetail.UserPhoto != null)
+            {
+                ViewBag.EmployeeImg = userDetail.UserPhoto;
+            }
+            else
+            {
+                ViewBag.EmployeeImg = null;
+            }
+
             if (userDetail.ReportsTo != null)
             {
                 ViewBag.ManagerName = $"{userDetail.UserDetail1.FirstName} {userDetail.UserDetail1.LastName}";

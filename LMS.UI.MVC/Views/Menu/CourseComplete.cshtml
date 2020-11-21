@@ -18,7 +18,7 @@ else if (ViewBag.CompletedNum > 2 && ViewBag.CompletedNum < 5)
 <a href="@Url.Action("Employee", "Reports")" class="btn btn-@color">@ViewBag.CompletedNum @($"Course{( ViewBag.CompletedNum > 1 || ViewBag.CompletedNum == 0 ? "s" : "" )} Completed This Year")</a> 
 @if (Model.UserPhoto == null)
 {
-    <a href="#" class="btn btn-warning">Photo <i class="fa fa-upload"></i></a>
+    <a href="@Url.Action("Index", "User")" class="btn btn-warning">Photo <i class="fa fa-upload"></i></a>
 }
 
 

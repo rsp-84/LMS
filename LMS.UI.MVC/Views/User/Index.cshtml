@@ -1,0 +1,142 @@
+﻿@model LMS.DATA.EF.UserDetail
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<section class="grey page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-left">
+                <h1>Profile</h1>
+            </div>
+            <div class="col-md-6 text-right">
+                <div class="bread">
+                    <ol class="breadcrumb">
+                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                        <li><a href="@Url.Action("Index", "Courses")">Courses</a></li>
+                        <li class="active">Profile</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="white section">
+    <div class="container">
+        <div class="row">
+            <div id="course-left-sidebar" class="col-md-3">
+                @if (Model.UserPhoto != null)
+                {
+                    <div class="course-image-widget">
+                        <img src="~/content/images/user/@Model.UserPhoto" alt="@ViewBag.Name" class="img-responsive">
+                    </div>
+                }
+                else
+                {
+                    <h4>Please add a photo to your profile!</h4>
+                }
+                <div class="course-meta">
+                    <p>@ViewBag.Name</p>
+                    <hr>
+                    <p>Reports To <small class="label label-primary">@(ViewBag.ManagerName == null ? "Not Assigned" : ViewBag.ManagerName)</small></p>
+                    <hr>
+                </div>
+            </div>
+            <div id="course-content" class="col-md-9">
+                <div class="course-description">
+                    <h3 class="course-title">Edit Profile</h3>
+                    <p>Review and edit your profile. Please make sure to upload a current photo. The photo should be an appropriate business picture of the upper portion of your body or a headshot.</p>
+                    <div class="edit-profile">
+                        <div class="form-group">
+                            <label>First / Last Name</label>
+                            <input type="text" class="form-control" placeholder="@ViewBag.Name" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" class="form-control" placeholder="@ViewBag.Email" readonly>
+                        </div>
+                        <div class="form-group">
+                            <a href="@Url.Action("Index", "Manage")" class="btn btn-primary">Manage Password</a>
+                        </div>
+                        @using (Html.BeginForm("Edit", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(model => model.UserId)
+                            @Html.HiddenFor(model => model.FirstName)
+                            @Html.HiddenFor(model => model.LastName)
+                            @Html.HiddenFor(model => model.ReportsTo)
+                            @Html.HiddenFor(model => model.UserPhoto)
+
+                            <div class="form-group">
+                                <p>
+                                    @if (Model.UserPhoto == null)
+                                    {
+                                        <label>No Image Saved!</label>
+                                    }
+                                </p>
+                                <p>
+                                    <label>Upload Photo</label>
+                                    <input type="file" class="btn btn-primary" name="userImg">
+                                </p>
+                            </div>
+                            <button type="submit" class="btn btn-default">Save Changes</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+@* Save for now *@
+@*<h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserPhoto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserDetail1.FirstName)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserPhoto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserDetail1.FirstName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.UserId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.UserId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.UserId })
+            </td>
+        </tr>
+    }
+
+    </table>*@
