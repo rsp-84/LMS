@@ -16,7 +16,13 @@
                     <ol class="breadcrumb">
                         <li><a href="@Url.Action("Index", "Home")">Home</a></li>
                         <li><a href="@Url.Action("Index", "Courses")">Courses</a></li>
-                        <li><a href="@Url.Action("Employee", "Reports")">Employee Report</a></li>
+                        @if (User.IsInRole("Employee"))
+                        {
+                            <li><a href="@Url.Action("Employee", "Reports")">Employee Report</a></li>                        }
+                        @if (User.IsInRole("Manager"))
+                        {
+                            <li><a href="@Url.Action("Manager", "Reports")">Manager Report</a></li>
+                        }
                         <li class="active">Profile</li>
                     </ol>
                 </div>
@@ -85,7 +91,14 @@
                                 </p>
                             </div>
                             <button type="submit" class="btn btn-default">Save Changes</button>
-                            <a href="@Url.Action("Employee", "Reports")" class="btn btn-primary pull-right">Employee Report</a>
+                            if (User.IsInRole("Employee"))
+                            {
+                                <a href="@Url.Action("Employee", "Reports")" class="btn btn-primary pull-right">Employee Report</a>
+                            }
+                            if (User.IsInRole("Manager"))
+                            {
+                                <a href="@Url.Action("Manager", "Reports")" class="btn btn-primary pull-right">Manager Report</a>
+                            }
                         }
                     </div>
                 </div>
