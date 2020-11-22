@@ -107,6 +107,7 @@ namespace LMS.UI.MVC.Controllers
             foreach (var item in allAssignedEmployees)
             {
                 ManagerReportIndexViewModel objMrVM = new ManagerReportIndexViewModel();
+                var courseList = db.CourseCompletions.Where(x => x.UserId == item.UserId && x.DateCompleted.Year == DateTime.Now.Year).Select(x => x.Course).ToList();
                 var numCourses = db.CourseCompletions.Where(x => x.UserId == item.UserId).Select(x => x.DateCompleted.Year);
                 var numLessons = db.LessonViews.Where(x => x.UserId == item.UserId).Select(x => x.DateViewed.Year);
 
@@ -131,8 +132,9 @@ namespace LMS.UI.MVC.Controllers
 
                 objMrVM.EmployeeFirstName = item.FirstName;
                 objMrVM.EmployeeLastName = item.LastName;
-                objMrVM.numCoursesCompletedYTD = courseCount;
-                objMrVM.numLessonsCompletedYTD = lessonCount;
+                objMrVM.NumCoursesCompletedYTD = courseCount;
+                objMrVM.NumLessonsCompletedYTD = lessonCount;
+                objMrVM.CoursesCompletedYTD = courseList;
 
                 managerReportIndexVM.Add(objMrVM);
             }

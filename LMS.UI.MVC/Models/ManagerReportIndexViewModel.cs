@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LMS.DATA.EF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,7 +10,8 @@ namespace LMS.UI.MVC.Models
     {
         public string EmployeeFirstName { get; set; }
         public string EmployeeLastName { get; set; }
-        public int numCoursesCompletedYTD { get; set; }
-        public int numLessonsCompletedYTD { get; set; }
+        public int NumCoursesCompletedYTD { get; set; }
+        public int NumLessonsCompletedYTD { get; set; }
+        public List<Course> CoursesCompletedYTD { get; set; }
     }
 }
