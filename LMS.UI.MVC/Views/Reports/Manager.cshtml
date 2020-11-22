@@ -84,8 +84,83 @@
                 </div>
             </div>
         </div>
-        test
+        @{
+            int hrefCounter = 0;
+            int hrefCounter2 = 0;
+        }
+        @foreach (var userCourses in Model.GroupBy(x => x.EmployeeId))
+        {
+            hrefCounter++;
+            hrefCounter2++;
+            <div class="widget-title">
+                @foreach (var name in userCourses)
+                {
+                    <h4>@name.EmployeeFirstName @name.EmployeeLastName</h4>
+                }
+                <hr>
+            </div>
+            <div class="tabbed-widget">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#@($"home{hrefCounter}")">Courses</a></li>
+                    <li><a data-toggle="tab" href="#@($"menu{hrefCounter2}")">Lessons</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="@($"home{hrefCounter}")" class="tab-pane fade in active">
+                        <p>
+                            <table id="completedCourseTable" class="table completedCourseTable">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Category</th>
+                                        <th>Date Completed</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var courses in userCourses.Select(x => x.CoursesCompletedYTD))
+                                    {
+                                        foreach (var course in courses)
+                                        {
+                                            <tr>
+                                                <td>@course.CourseName</td>
+                                                <td>@course.CourseCat</td>
+                                                <td>@course.CourseCompletedDate.ToString("MM/dd/yyyy @ hh:mm tt")</td>
+                                            </tr>
+                                        }
+
+                                    }
+                                </tbody>
+                            </table>
+                        </p>
+                    </div>
+                    <div id="@($"menu{hrefCounter2}")" class="tab-pane fade">
+                        <p>
+                            <table id="completedLessonTable" class="table completedLessonTable">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Date Completed</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var lessons in userCourses.Select(x => x.LessonsCompletedYTD))
+                                    {
+                                        foreach (var lesson in lessons)
+                                        {
+                                            <tr>
+                                                <td>@lesson.LessonName</td>
+                                                <td>@lesson.LessonCompletedDate.ToString("MM/dd/yyyy @ hh:mm tt")</td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
+
 </section>
 
 @section scripts
@@ -94,6 +169,14 @@
     <script>
         $(document).ready(function () {
             $('#employeeCompletedTable').DataTable();
+            $('.completedCourseTable').DataTable({
+                "order": [[2, "desc"]]
+            });
+            $('.completedLessonTable').DataTable({
+                "order": [[1, "desc"]]
+            });
+
+
         });
     </script>
 }
