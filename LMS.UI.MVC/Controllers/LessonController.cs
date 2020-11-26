@@ -13,7 +13,7 @@ using Microsoft.AspNet.Identity;
 namespace LMS.UI.MVC.Controllers
 {
     [HandleError]
-    public class LessonsController : Controller
+    public class LessonController : Controller
     {
         private LMSEntities db = new LMSEntities();
         private string[] allowedExts = new string[] { ".pdf" };

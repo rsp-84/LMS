@@ -16,7 +16,7 @@ namespace LMS.UI.MVC.Controllers
         private LMSEntities db = new LMSEntities();
 
         // GET: CourseComplete
-        public ActionResult CourseComplete()
+        public ActionResult EmployeeNavMenu()
         {
             var userDetails = db.UserDetails.Find(User.Identity.GetUserId());
 

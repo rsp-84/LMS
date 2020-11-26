@@ -169,15 +169,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CoursesController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LessonsController.cs" />
+    <Compile Include="Controllers\LessonController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -186,6 +187,7 @@
     <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\EmployeeReportsViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManagerReportIndexViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -330,6 +332,7 @@
     <Content Include="ViewerJS\text_layer_builder.js" />
     <Content Include="ViewerJS\ui_utils.js" />
     <Content Include="ViewerJS\webodf.js" />
+    <Content Include="_archive\course-account.html" />
     <Content Include="_archive\course-filterable.html" />
     <Content Include="_archive\course-reports.html" />
     <Content Include="_archive\course-single.html" />
@@ -532,25 +535,32 @@
     <Content Include="_archive\rs-plugin\font\revicons90c6.woff" />
     <Content Include="Views\Home\EmailConfirmation.cshtml" />
     <Content Include="Views\Home\Courses.cshtml" />
-    <Content Include="Views\Courses\Create.cshtml" />
-    <Content Include="Views\Courses\Delete.cshtml" />
-    <Content Include="Views\Courses\Details.cshtml" />
-    <Content Include="Views\Courses\Edit.cshtml" />
-    <Content Include="Views\Courses\Index.cshtml" />
-    <Content Include="Views\Lessons\Create.cshtml" />
-    <Content Include="Views\Lessons\Delete.cshtml" />
-    <Content Include="Views\Lessons\Details.cshtml" />
-    <Content Include="Views\Lessons\Edit.cshtml" />
-    <Content Include="Views\Lessons\Index.cshtml" />
+    <Content Include="Views\Course\Create.cshtml" />
+    <Content Include="Views\Course\Delete.cshtml" />
+    <Content Include="Views\Course\Details.cshtml" />
+    <Content Include="Views\Course\Edit.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Lesson\Create.cshtml" />
+    <Content Include="Views\Lesson\Delete.cshtml" />
+    <Content Include="Views\Lesson\Details.cshtml" />
+    <Content Include="Views\Lesson\Edit.cshtml" />
+    <Content Include="Views\Lesson\Index.cshtml" />
     <Content Include="Views\Shared\_PdfLesson.cshtml" />
     <Content Include="Views\Shared\_YouTubeLesson.cshtml" />
-    <Content Include="Views\Menu\CourseComplete.cshtml" />
+    <Content Include="Views\Menu\EmployeeNavMenu.cshtml" />
     <Content Include="Views\Shared\_CourseList.cshtml" />
     <Content Include="Views\Error\PageNotFound.cshtml" />
     <Content Include="Views\Reports\Employee.cshtml" />
+    <Content Include="Views\Reports\Manager.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\images\user\" />
     <Folder Include="Content\lessonPdf\" />
   </ItemGroup>
   <ItemGroup>

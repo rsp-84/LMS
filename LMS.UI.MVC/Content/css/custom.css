@@ -69,3 +69,11 @@ a[alt]:hover:after {
 .course-meta .label-primary {
     width: auto;
 }
+
+.toggleVisible {
+    display: none;
+}
+
+.manager-report__employee-name--link {
+    cursor: pointer;
+}

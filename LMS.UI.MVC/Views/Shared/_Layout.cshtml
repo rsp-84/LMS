@@ -85,7 +85,7 @@
                                     <a href="@Url.Action("Index", "Home")">Home</a>
                                 </li>
                                 <li>
-                                    <a href="@Url.Action("Index", "Courses")">Courses</a>
+                                    <a href="@Url.Action("Index", "Course")">Courses</a>
                                 </li>
                                 <li>
                                     <a href="@Url.Action("About", "Home")">About</a>
@@ -98,10 +98,12 @@
                             <ul class="nav navbar-nav navbar-right">
                                 @if (Request.IsAuthenticated && User.IsInRole("Employee"))
                                 {
-                                    {Html.RenderAction("CourseComplete", "Menu");}
+                                    { Html.RenderAction("EmployeeNavMenu", "Menu"); }
                                 }
-                                else if (Request.IsAuthenticated)
-                                { }
+                                else if (Request.IsAuthenticated && User.IsInRole("Manager"))
+                                {
+                                    <a href="@Url.Action("Manager", "Reports")" class="btn btn-default">View Assigned Employee Progress</a>
+                                }
                                 else
                                 {
                                     <li><a class="btn btn-primary" href="@Url.Action("Register", "Account")"><i class="fa fa-sign-in"></i> Register Now</a></li>
