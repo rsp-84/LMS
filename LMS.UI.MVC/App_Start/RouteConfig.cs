@@ -10,8 +10,12 @@ namespace LMS
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.Add("PostDetails", new SeoRoute("Course/Details/{id}",
+            routes.Add("CourseDetails", new SeoRoute("Course/Details/{id}",
             new RouteValueDictionary(new { controller = "Course", action = "Details" }),
+            new MvcRouteHandler()));
+
+            routes.Add("LessonDetails", new SeoRoute("Lesson/Details/{id}",
+            new RouteValueDictionary(new { controller = "Lesson", action = "Details" }),
             new MvcRouteHandler()));
 
             routes.MapRoute(
