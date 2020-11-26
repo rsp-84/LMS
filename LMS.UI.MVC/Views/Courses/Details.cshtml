@@ -36,7 +36,11 @@
                     <p class="course-forum">Category : @Model.Category</p><!-- TODO: Add a space -->
                 </div>
                 <div class="course-button">
-                    @if (Model.CourseCompletions.Where(x => x.CourseId == Model.CourseId && x.UserId == ViewBag.CurrentUserId).Count() < 1)
+                    @if (Request.IsAuthenticated && User.IsInRole("Manager"))
+                    {
+                        <a href="" id="takeThisCourse" class="btn btn-primary btn-block">REVIEW THIS COURSE</a>
+                    }
+                    else if (Model.CourseCompletions.Where(x => x.CourseId == Model.CourseId && x.UserId == ViewBag.CurrentUserId).Count() < 1)
                     {
                         <a href="" id="takeThisCourse" class="btn btn-primary btn-block">TAKE THIS COURSE</a>
                     }
@@ -74,6 +78,27 @@
                                         <td><i class="fa @docType"></i></td>
                                         <td><a href="@Url.Action("Details", "Lessons", new { id = lesson.LessonId })"><span class="btn btn-sm btn-primary">Review</span> @lesson.LessonTitle</a></td>
                                         <td><i class="fa  @(lesson.LessonViews.Where(x => x.LessonId == lesson.LessonId && ViewBag.CurrentUserId == x.UserId).Count() < 1 ? "fa-close" : "fa-check")"></i></td>
+                                    </tr>
+
+                                    docType = string.Empty;
+                                }
+                            }
+                            else if (Request.IsAuthenticated && User.IsInRole("Manager"))
+                            {
+                                foreach (var lesson in Model.Lessons)
+                                {
+                                    if (lesson.VideoURL != null)
+                                    {
+                                        docType = "fa-youtube-play";
+                                    }
+                                    else if (lesson.PdfFilename != null)
+                                    {
+                                        docType = "fa-file-pdf-o";
+                                    }
+                                    <tr>
+                                        <td><i class="fa @docType"></i></td>
+                                        <td><a href="@Url.Action("Details", "Lessons", new { id = lesson.LessonId })" class="takeThisCourseClass"><span class="btn btn-sm btn-primary">Manager Review</span> @lesson.LessonTitle</a></td>
+                                        <td><i class="fa fa-check"></i></td>
                                     </tr>
 
                                     docType = string.Empty;
