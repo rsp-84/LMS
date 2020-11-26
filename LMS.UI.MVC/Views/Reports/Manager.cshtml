@@ -19,7 +19,6 @@
                 <div class="bread">
                     <ol class="breadcrumb">
                         <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-                        <li><a href="@Url.Action("Index", "Courses")">Courses</a></li>
                         <li class="active">Manager Report</li>
                     </ol>
                 </div>
@@ -63,7 +62,7 @@
                             @{
                                 int showEmployeeDetails = 0;
                             }
-                            <table id="employeeCompletedTable" class="table">
+                            <table id="employeeCompletedTable" class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
@@ -115,7 +114,7 @@
                     <div class="tab-content">
                         <div id="@($"home{hrefCounter}")" class="tab-pane fade in active">
                             <p>
-                                <table id="completedCourseTable" class="table completedCourseTable">
+                                <table id="completedCourseTable" class="table table-hover completedCourseTable">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
@@ -142,7 +141,7 @@
                         </div>
                         <div id="@($"menu{hrefCounter2}")" class="tab-pane fade">
                             <p>
-                                <table id="completedLessonTable" class="table completedLessonTable">
+                                <table id="completedLessonTable" class="table table-hover completedLessonTable">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
