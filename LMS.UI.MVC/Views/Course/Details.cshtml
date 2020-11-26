@@ -76,7 +76,7 @@
                                     }
                                     <tr>
                                         <td><i class="fa @docType"></i></td>
-                                        <td><a href="@Url.Action("Details", "Lessons", new { id = lesson.LessonId })"><span class="btn btn-sm btn-primary">Review</span> @lesson.LessonTitle</a></td>
+                                        <td><a href="@Url.Action("Details", "Lesson", new { id = lesson.LessonId })"><span class="btn btn-sm btn-primary">Review</span> @lesson.LessonTitle</a></td>
                                         <td><i class="fa  @(lesson.LessonViews.Where(x => x.LessonId == lesson.LessonId && ViewBag.CurrentUserId == x.UserId).Count() < 1 ? "fa-close" : "fa-check")"></i></td>
                                     </tr>
 
@@ -97,7 +97,7 @@
                                     }
                                     <tr>
                                         <td><i class="fa @docType"></i></td>
-                                        <td><a href="@Url.Action("Details", "Lessons", new { id = lesson.LessonId })" class="takeThisCourseClass"><span class="btn btn-sm btn-primary">Manager Review</span> @lesson.LessonTitle</a></td>
+                                        <td><a href="@Url.Action("Details", "Lesson", new { id = lesson.LessonId })" class="takeThisCourseClass"><span class="btn btn-sm btn-primary">Manager Review</span> @lesson.LessonTitle</a></td>
                                         <td><i class="fa fa-check"></i></td>
                                     </tr>
 
@@ -118,7 +118,7 @@
                                     }
                                     <tr>
                                         <td><i class="fa @docType"></i></td>
-                                        <td><a href="@Url.Action("Details", "Lessons", new { id = lesson.LessonId })" class="takeThisCourseClass">@lesson.LessonTitle</a></td>
+                                        <td><a href="@Url.Action("Details", "Lesson", new { id = lesson.LessonId })" class="takeThisCourseClass">@lesson.LessonTitle</a></td>
                                         <td><i class="fa  @(lesson.LessonViews.Where(x => x.LessonId == lesson.LessonId && ViewBag.CurrentUserId == x.UserId).Count() < 1 ? "fa-close" : "fa-check")"></i></td>
                                     </tr>
 

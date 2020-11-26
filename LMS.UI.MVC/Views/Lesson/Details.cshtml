@@ -47,9 +47,9 @@
                             @if (User.IsInRole("Manager")){ }
                             else if (Model.LessonViews.Where(x => x.LessonId == Model.LessonId && ViewBag.CurrentUserId == x.UserId).Count() < 1)
                             {
-                                using (Html.BeginForm("Details", "Lessons"))
+                                using (Html.BeginForm("Details", "Lesson"))
                                 {
-                                    <a href="@Url.Action("Completed", "Lessons", new { id = Model.LessonId })" class="btn btn-primary" data-form-method="post">Complete Lesson <i class="fa if-arrow-right"></i></a>
+                                    <a href="@Url.Action("Completed", "Lesson", new { id = Model.LessonId })" class="btn btn-primary" data-form-method="post">Complete Lesson <i class="fa if-arrow-right"></i></a>
                                 }
                             }
                             <span class="text-danger">@ViewBag.AlreadyCompletedMessage</span>
@@ -80,7 +80,7 @@
                                             }
                                             <tr>
                                                 <td><i class="fa @docType"></i></td>
-                                                <td><a href="@Url.Action("Details", "Lessons", new { id = lesson.LessonId })"><span class="btn btn-sm btn-primary">Manager Review</span> @lesson.LessonTitle</a></td>
+                                                <td><a href="@Url.Action("Details", "Lesson", new { id = lesson.LessonId })"><span class="btn btn-sm btn-primary">Manager Review</span> @lesson.LessonTitle</a></td>
                                                 <td><i class="fa fa-check")"></i></td>
                                             </tr>
 
@@ -101,7 +101,7 @@
                                             }
                                             <tr>
                                                 <td><i class="fa @docType"></i></td>
-                                                <td><a href="@Url.Action("Details", "Lessons", new { id = lesson.LessonId })"><span class="btn btn-sm btn-primary">Review</span> @lesson.LessonTitle</a></td>
+                                                <td><a href="@Url.Action("Details", "Lesson", new { id = lesson.LessonId })"><span class="btn btn-sm btn-primary">Review</span> @lesson.LessonTitle</a></td>
                                                 <td><i class="fa  @(lesson.LessonViews.Where(x => x.LessonId == lesson.LessonId && ViewBag.CurrentUserId == x.UserId).Count() < 1 ? "fa-close" : "fa-check")"></i></td>
                                             </tr>
 
@@ -122,7 +122,7 @@
                                             }
                                             <tr>
                                                 <td><i class="fa @docType"></i></td>
-                                                <td><a href="@Url.Action("Details", "Lessons", new { id = lesson.LessonId })">@lesson.LessonTitle</a></td>
+                                                <td><a href="@Url.Action("Details", "Lesson", new { id = lesson.LessonId })">@lesson.LessonTitle</a></td>
                                                 <td><i class="fa  @(lesson.LessonViews.Where(x => x.LessonId == lesson.LessonId && ViewBag.CurrentUserId == x.UserId).Count() < 1 ? "fa-close" : "fa-check")"></i></td>
                                             </tr>
 

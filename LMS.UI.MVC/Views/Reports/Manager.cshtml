@@ -128,7 +128,7 @@
                                             foreach (var course in courses)
                                             {
                                                 <tr>
-                                                    <td>@course.CourseName</td>
+                                                    <td><a target="_blank" href="@Url.Action("Details", "Course", new { id = course.CourseId })">@course.CourseName</a></td>
                                                     <td>@course.CourseCat</td>
                                                     <td>@course.CourseCompletedDate.ToString("MM/dd/yyyy @ hh:mm tt")</td>
                                                 </tr>
@@ -154,7 +154,7 @@
                                             foreach (var lesson in lessons)
                                             {
                                                 <tr>
-                                                    <td>@lesson.LessonName</td>
+                                                    <td><a target="_blank" href="@Url.Action("Details", "Lesson", new { id = lesson.LessonId })">@lesson.LessonName</td>
                                                     <td>@lesson.LessonCompletedDate.ToString("MM/dd/yyyy @ hh:mm tt")</td>
                                                 </tr>
                                             }

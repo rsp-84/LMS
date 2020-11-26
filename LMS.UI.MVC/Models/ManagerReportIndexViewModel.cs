@@ -18,6 +18,7 @@ namespace LMS.UI.MVC.Models
 
     public class CoursesCompleted
     {
+        public int CourseId { get; set; }
         public string CourseName { get; set; }
         public string CourseCat { get; set; }
         public DateTime CourseCompletedDate { get; set; }
@@ -25,6 +26,7 @@ namespace LMS.UI.MVC.Models
 
     public class LessonsCompleted
     {
+        public int LessonId { get; set; }
         public string LessonName { get; set; }
         public DateTime LessonCompletedDate { get; set; }
     }

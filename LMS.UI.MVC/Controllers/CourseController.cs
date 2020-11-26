@@ -14,7 +14,7 @@ using Microsoft.AspNet.Identity;
 namespace LMS.UI.MVC.Controllers
 {
     [HandleError]
-    public class CoursesController : Controller
+    public class CourseController : Controller
     {
         private LMSEntities db = new LMSEntities();
         private string[] goodExts = { ".jpeg", ".jpg", ".gif", ".png" };
