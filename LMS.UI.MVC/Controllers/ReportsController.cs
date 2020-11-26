@@ -52,13 +52,13 @@ namespace LMS.UI.MVC.Controllers
             //Get the data for the VM----------
             var userLessonData = (from completedLesson in db.LessonViews
                                   where completedLesson.LessonId == completedLesson.Lesson.LessonId && userId == completedLesson.UserId && completedLesson.DateViewed.Year == DateTime.Now.Year
-                                  select new { completedLesson.Lesson.LessonTitle, completedLesson.DateViewed }).ToList();
+                                  select new { completedLesson.LessonId, completedLesson.Lesson.LessonTitle, completedLesson.DateViewed }).ToList();
 
             ViewBag.LessonCompleteCount = userLessonData.Where(x => x.DateViewed.Year == DateTime.Now.Year).Count();
 
             var userCourseData = (from completedCourse in db.CourseCompletions
                                   where completedCourse.CourseId == completedCourse.Course.CourseId && userId == completedCourse.UserId && completedCourse.DateCompleted.Year == DateTime.Now.Year
-                                  select new { completedCourse.Course.CourseName, completedCourse.Course.CourseImg, completedCourse.Course.Category, completedCourse.DateCompleted }).ToList();
+                                  select new { completedCourse.CourseId, completedCourse.Course.CourseName, completedCourse.Course.CourseImg, completedCourse.Course.Category, completedCourse.DateCompleted }).ToList();
 
             ViewBag.CourseCompleteCount = userCourseData.Where(x => x.DateCompleted.Year == DateTime.Now.Year).Count();
 
@@ -67,6 +67,7 @@ namespace LMS.UI.MVC.Controllers
             {
                 EmployeeReportsViewModel objErVM = new EmployeeReportsViewModel();
 
+                objErVM.LessonId = item.LessonId;
                 objErVM.LessonTitle = item.LessonTitle;
                 objErVM.LessonCompletedDate = item.DateViewed;
 
@@ -76,6 +77,7 @@ namespace LMS.UI.MVC.Controllers
             {
                 EmployeeReportsViewModel objErVM = new EmployeeReportsViewModel();
 
+                objErVM.CourseId = item.CourseId;
                 objErVM.CourseName = item.CourseName;
                 objErVM.CourseImg = item.CourseImg;
                 objErVM.CouseCat = item.Category;

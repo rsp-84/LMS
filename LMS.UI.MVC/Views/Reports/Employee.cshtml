@@ -19,7 +19,7 @@
                 <div class="bread">
                     <ol class="breadcrumb">
                         <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-                        <li><a href="@Url.Action("Index", "Courses")">Courses</a></li>
+                        <li><a href="@Url.Action("Index", "Course")">Courses</a></li>
                         <li class="active">Employee Report</li>
                     </ol>
                 </div>
@@ -58,7 +58,7 @@
                 <div class="course-description">
                     <h3 class="course-title">Your Progress</h3>
                     <p>Each employee is responsible for completing six courses per calendar year to stay current on continuing education. It is essential to keep up-to-date on the technologies we use and get a glimpse at new technologies.</p>
-                    <p><a href="@Url.Action("Index", "Courses")" class="btn btn-primary">Take A Course <i class="fa fa-arrow-right"></i></a></p>
+                    <p><a href="@Url.Action("Index", "Course")" class="btn btn-primary">Take A Course <i class="fa fa-arrow-right"></i></a></p>
                     <div class="row">
                         <div class="achievement-wrapper">
                             <div class="widget-title">
@@ -73,7 +73,7 @@
                                 <div class="tab-content">
                                     <div id="home" class="tab-pane fade in active">
                                         <p>
-                                            <table id="completedCourseTable" class="table">
+                                            <table id="completedCourseTable" class="table table-hover">
                                                 <thead>
                                                     <tr>
                                                         <th>Name</th>
@@ -87,7 +87,7 @@
                                                         if (course.CourseName != null)
                                                         {
                                                             <tr>
-                                                                <td>@course.CourseName</td>
+                                                                <td><a target="_blank" href="@Url.Action("Details", "Course", new { id = course.CourseId })">@course.CourseName</a></td>
                                                                 <td>@course.CouseCat</td>
                                                                 <td>@course.CourseCompletedDate.ToString("MM/dd/yyyy @ hh:mm tt")</td>
                                                             </tr>
@@ -99,7 +99,7 @@
                                     </div>
                                     <div id="menu1" class="tab-pane fade">
                                         <p>
-                                            <table id="completedLessonTable" class="table">
+                                            <table id="completedLessonTable" class="table table-hover">
                                                 <thead>
                                                     <tr>
                                                         <th>Name</th>
@@ -112,7 +112,7 @@
                                                         if (lesson.CourseName == null)
                                                         {
                                                             <tr>
-                                                                <td>@lesson.LessonTitle</td>
+                                                                <td><a target="_blank" href="@Url.Action("Details", "Lesson", new { id = lesson.LessonId })">@lesson.LessonTitle</a></td>
                                                                 <td>@lesson.LessonCompletedDate.ToString("MM/dd/yyyy @ hh:mm tt")</td>
                                                             </tr>
                                                         }
