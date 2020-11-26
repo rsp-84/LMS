@@ -44,11 +44,12 @@
                             @Model.Introduction
                         </p>
                         <p>
-                            @if (Model.LessonViews.Where(x => x.LessonId == Model.LessonId && ViewBag.CurrentUserId == x.UserId).Count() < 1)
+                            @if (User.IsInRole("Manager")){ }
+                            else if (Model.LessonViews.Where(x => x.LessonId == Model.LessonId && ViewBag.CurrentUserId == x.UserId).Count() < 1)
                             {
                                 using (Html.BeginForm("Details", "Lessons"))
                                 {
-                                    <a href="@Url.Action("Completed", "Lessons", new { id = Model.LessonId })" class="btn btn-primary" data-form-method="post">Complete Lesson <i class="fa fa-arrow-right"></i></a>
+                                    <a href="@Url.Action("Completed", "Lessons", new { id = Model.LessonId })" class="btn btn-primary" data-form-method="post">Complete Lesson <i class="fa if-arrow-right"></i></a>
                                 }
                             }
                             <span class="text-danger">@ViewBag.AlreadyCompletedMessage</span>
@@ -65,7 +66,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if (Model.Course.CourseCompletions.Where(x => x.CourseId == Model.CourseId && x.UserId == ViewBag.CurrentUserId).Count() > 0)
+                                    @if (User.IsInRole("Manager"))
+                                    {
+                                        foreach (var lesson in Model.Course.Lessons)
+                                        {
+                                            if (lesson.VideoURL != null)
+                                            {
+                                                docType = "fa-youtube-play";
+                                            }
+                                            else if (lesson.PdfFilename != null)
+                                            {
+                                                docType = "fa-file-pdf-o";
+                                            }
+                                            <tr>
+                                                <td><i class="fa @docType"></i></td>
+                                                <td><a href="@Url.Action("Details", "Lessons", new { id = lesson.LessonId })"><span class="btn btn-sm btn-primary">Manager Review</span> @lesson.LessonTitle</a></td>
+                                                <td><i class="fa fa-check")"></i></td>
+                                            </tr>
+
+                                            docType = string.Empty;
+                                        }
+                                    }
+                                    else if (Model.Course.CourseCompletions.Where(x => x.CourseId == Model.CourseId && x.UserId == ViewBag.CurrentUserId).Count() > 0)
                                     {
                                         foreach (var lesson in Model.Course.Lessons)
                                         {
