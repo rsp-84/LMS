@@ -192,6 +192,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utilities\ImageService.cs" />
+    <Compile Include="Utilities\SeoRoute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\A.carousel.css+bbpress.css,Mcc.aXsJ7_Y__m.css.pagespeed.cf.ERce4VkS3l.css" />

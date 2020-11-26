@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using LMS.UI.MVC.Utilities;
+using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace LMS
@@ -8,6 +9,10 @@ namespace LMS
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.Add("PostDetails", new SeoRoute("Course/Details/{id}",
+            new RouteValueDictionary(new { controller = "Course", action = "Details" }),
+            new MvcRouteHandler()));
 
             routes.MapRoute(
                 name: "Default",

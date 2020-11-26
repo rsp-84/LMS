@@ -13,7 +13,7 @@
                         </div>*@
                 </div>
                 <div class="shop-item-title clearfix">
-                    <h4><a href="@Url.Action("Details", "Course", new { id = course.CourseId })" alt="Completed: review only"><span class="text-muted">@course.CourseName</span> <i class="fa fa-check-square-o" style="color: green;"></i></a></h4>
+                    <h4><a href="@Url.Action("Details", "Course", new { id = course.GenerateSlug() })" alt="Completed: review only"><span class="text-muted">@course.CourseName</span> <i class="fa fa-check-square-o" style="color: green;"></i></a></h4>
                     <div class="shopmeta">
                         <span class="pull-left">Category</span>
                         <div class="rating pull-right">
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="shop-item-title clearfix">
-                    <h4><a href="@Url.Action("Details", "Course", new { id = course.CourseId })">@course.CourseName</a></h4>
+                    <h4><a href="@Url.Action("Details", "Course", new { id = course.GenerateSlug() })">@course.CourseName</a></h4>
                     <div class="shopmeta">
                         <span class="pull-left">Category</span>
                         <div class="rating pull-right">
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="visible-buttons">
-                    <a title="Read More" href="@Url.Action("Details", "Course", new { id = course.CourseId })"><span class="fa fa-search"></span></a>
+                    <a title="Read More" href="@Url.Action("Details", "Course", new { id = course.GenerateSlug() })"><span class="fa fa-search"></span></a>
                 </div>
             </div>
         </div>
