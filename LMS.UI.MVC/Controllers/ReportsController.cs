@@ -149,6 +149,14 @@ namespace LMS.UI.MVC.Controllers
             return View(managerReportIndexVM);
         }
 
+        // GET: Admin
+        [Authorize(Roles = "Admin")]
+        public ActionResult Admin()
+        {
+
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
