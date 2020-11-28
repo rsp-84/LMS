@@ -87,7 +87,7 @@
                                                         if (course.CourseName != null)
                                                         {
                                                             <tr>
-                                                                <td><a target="_blank" href="@Url.Action("Details", "Course", new { id = course.CourseId })">@course.CourseName</a></td>
+                                                                <td><a target="_blank" href="@Url.Action("Details", "Course", new { id = course.GenerateSlug() })">@course.CourseName</a></td>
                                                                 <td>@course.CouseCat</td>
                                                                 <td>@course.CourseCompletedDate.ToString("MM/dd/yyyy @ hh:mm tt")</td>
                                                             </tr>
@@ -112,7 +112,7 @@
                                                         if (lesson.CourseName == null)
                                                         {
                                                             <tr>
-                                                                <td><a target="_blank" href="@Url.Action("Details", "Lesson", new { id = lesson.LessonId })">@lesson.LessonTitle</a></td>
+                                                                <td><a target="_blank" href="@Url.Action("Details", "Lesson", new { id = lesson.GenerateSlug2() })">@lesson.LessonTitle</a></td>
                                                                 <td>@lesson.LessonCompletedDate.ToString("MM/dd/yyyy @ hh:mm tt")</td>
                                                             </tr>
                                                         }
