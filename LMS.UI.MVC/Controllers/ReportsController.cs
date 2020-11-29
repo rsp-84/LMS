@@ -1,6 +1,7 @@
 ﻿using LMS.DATA.EF;
 using LMS.UI.MVC.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -153,8 +154,48 @@ namespace LMS.UI.MVC.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Admin()
         {
+            //Logged in admin
+            var loggedInAdmin = User.Identity.GetUserId();
 
-            return View();
+            //get data
+            List<CompanyAdminViewModel> companyAdminVM = new List<CompanyAdminViewModel>();
+
+            var managers = db.AspNetUsers
+                  .Where(u => u.AspNetRoles.Any(r => r.Name == "Manager"))
+                  .ToList();
+
+            var employees = db.AspNetUsers
+                  .Where(u => u.AspNetRoles.Any(r => r.Name == "Employee"))
+                  .ToList();
+
+            //Build VM
+            foreach (var item in managers)
+            {
+                CompanyAdminViewModel objAdmVM = new CompanyAdminViewModel();
+
+                objAdmVM.ManagerId = item.Id;
+                objAdmVM.ManagerFirstName = db.UserDetails.Find(item.Id).FirstName;
+                objAdmVM.ManagerLastName = db.UserDetails.Find(item.Id).LastName;
+                objAdmVM.NumOfDirectReports = db.UserDetails.Where(x => x.ReportsTo == item.Id).Count();
+
+                companyAdminVM.Add(objAdmVM);
+            }
+            foreach (var item in employees)
+            {
+                CompanyAdminViewModel objAdmVM = new CompanyAdminViewModel();
+
+                objAdmVM.EmployeeId = item.Id;
+                objAdmVM.EmployeeFirstName = db.UserDetails.Find(item.Id).FirstName;
+                objAdmVM.EmployeeLastName = db.UserDetails.Find(item.Id).LastName;
+            }
+
+            ViewBag.NumOfManagers = managers.Count;
+            ViewBag.NumOfEmployees = employees.Count;
+            ViewBag.AdminImg = db.UserDetails.Find(loggedInAdmin).UserPhoto;
+            ViewBag.AdminName = $"{db.UserDetails.Find(loggedInAdmin).FirstName} {db.UserDetails.Find(loggedInAdmin).LastName}";
+
+
+            return View(companyAdminVM);
         }
 
         protected override void Dispose(bool disposing)
