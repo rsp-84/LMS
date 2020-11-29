@@ -59,7 +59,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var manager in Model)
+                                @foreach (var manager in Model.Where(x => x.ManagerId != null))
                                 {
                                     <tr>
                                         <td>@manager.ManagerFirstName @manager.ManagerLastName</td>
@@ -70,6 +70,38 @@
                         </table>
                     </div>
                 </div>
+                <hr />
+                <div class="course-description">
+                    <h3 class="course-title">Employees</h3>
+                    <p>All current employees at A+ Inc.</p>
+                    <div class="row">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Reports To</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var employee in Model.Where(x => x.EmployeeId != null))
+                                {
+                                    <tr>
+                                        <td>@employee.EmployeeFirstName @employee.EmployeeLastName</td>
+                                        @if (employee.EmployeeManagerName == "")
+                                        {
+                                            <td><a href="@Url.Action("Edit", "UserDetails", new { id = employee.EmployeeId })" class="btn btn-small btn-primary">Assign Manager</a></td>
+                                        }
+                                        else
+                                        {
+                                            <td>@employee.EmployeeManagerName</td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

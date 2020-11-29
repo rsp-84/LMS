@@ -15,6 +15,7 @@ namespace LMS.UI.MVC.Models
         public string EmployeeId { get; set; }
         public string EmployeeFirstName { get; set; }
         public string EmployeeLastName { get; set; }
+        public string EmployeeManagerName { get; set; }
     }
 
 }

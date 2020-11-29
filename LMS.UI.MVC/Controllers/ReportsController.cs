@@ -187,6 +187,10 @@ namespace LMS.UI.MVC.Controllers
                 objAdmVM.EmployeeId = item.Id;
                 objAdmVM.EmployeeFirstName = db.UserDetails.Find(item.Id).FirstName;
                 objAdmVM.EmployeeLastName = db.UserDetails.Find(item.Id).LastName;
+                string managerId = db.UserDetails.Find(item.Id).ReportsTo;
+                objAdmVM.EmployeeManagerName = managerId != null ? $"{db.UserDetails.Find(managerId).FirstName} {db.UserDetails.Find(managerId).LastName}" : "";
+
+                companyAdminVM.Add(objAdmVM);
             }
 
             ViewBag.NumOfManagers = managers.Count;

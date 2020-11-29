@@ -99,6 +99,7 @@
     <Compile Include="Metadata\LessonViewMetadata.cs" />
     <Compile Include="Metadata\QuestionChoiceMetadata.cs" />
     <Compile Include="Metadata\QuestionMetadata.cs" />
+    <Compile Include="Metadata\UserDetailMetadata.cs" />
     <Compile Include="Metadata\UserQuestionAnswerMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Question.cs">

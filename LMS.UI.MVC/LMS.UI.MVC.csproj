@@ -179,6 +179,7 @@
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UserDetailsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -561,6 +562,11 @@
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Reports\Admin.cshtml" />
+    <Content Include="Views\UserDetails\Create.cshtml" />
+    <Content Include="Views\UserDetails\Delete.cshtml" />
+    <Content Include="Views\UserDetails\Details.cshtml" />
+    <Content Include="Views\UserDetails\Edit.cshtml" />
+    <Content Include="Views\UserDetails\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
