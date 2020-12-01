@@ -53,7 +53,7 @@
             </div>
             <div id="course-content" class="col-md-9">
                 <div class="widget-title">
-                    <h4>Staff <a href="#" class="btn btn-sm btn-primary">Manage <i class="fa fa-arrow-right"></i></a></h4>
+                    <h4>Staff</h4>
                 </div>
                 <div class="tabbed-widget">
                     <ul class="nav nav-tabs">
@@ -112,7 +112,7 @@
                     </div>
                 </div>
                 <div class="widget-title">
-                    <h4>Courses <a href="#" class="btn btn-sm btn-primary">Manage <i class="fa fa-arrow-right"></i></a></h4>
+                    <h4>Courses <a target="_blank" href="@Url.Action("Create", "Course")" class="btn btn-sm btn-primary">Create <i class="fa fa-arrow-right"></i></a></h4>
                 </div>
                 <div class="tabbed-widget">
                     <ul class="nav nav-tabs">
@@ -128,6 +128,7 @@
                                             <th>Name</th>
                                             <th>Description</th>
                                             <th>Category</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -137,6 +138,8 @@
                                                 <td><a href="#">@activeCourse.CourseName</a></td>
                                                 <td>@activeCourse.CourseDescription</td>
                                                 <td>@activeCourse.Category</td>
+                                                <td><a target="_blank" href="@Url.Action("Edit", "Course", new { id = activeCourse.CourseId })" class="btn btn-sm btn-warning admin__edit-btn" title="edit"><i class="fa fa-edit"></i></a>
+                                                <a target="_blank" href="@Url.Action("Delete", "Course", new { id = activeCourse.CourseId })" class="btn btn-sm btn-danger" title="delete"><i class="fa fa-trash-o"></i></a></td>
                                             </tr>
                                         }
                                     </tbody>
@@ -149,7 +152,10 @@
                                     <thead>
                                         <tr>
                                             <th>Name</th>
+                                            <th>Description</th>
                                             <th>Category</th>
+                                            <th></th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -157,7 +163,12 @@
                                         {
                                             <tr>
                                                 <td>@inactiveCourse.CourseName</td>
+                                                <td>@inactiveCourse.CourseDescription</td>
                                                 <td>@inactiveCourse.Category</td>
+                                                <td>
+                                                    <a target="_blank" href="@Url.Action("Edit", "Course", new { id = inactiveCourse.CourseId })" class="btn btn-sm btn-warning admin__edit-btn" title="edit"><i class="fa fa-edit"></i></a>
+                                                    <a target="_blank" href="@Url.Action("Delete", "Course", new { id = inactiveCourse.CourseId })" class="btn btn-sm btn-danger" title="delete"><i class="fa fa-trash-o"></i></a>
+                                                </td>
                                             </tr>
                                         }
                                     </tbody>
@@ -168,7 +179,7 @@
                 </div>
                 <hr />
                 <div class="widget-title">
-                    <h4>Lessons <a href="#" class="btn btn-sm btn-primary">Manage <i class="fa fa-arrow-right"></i></a></h4>
+                    <h4>Lessons  <a target="_blank" href="@Url.Action("Create", "Lesson")" class="btn btn-sm btn-primary">Create <i class="fa fa-arrow-right"></i></a></h4>
                 </div>
                 <div class="tabbed-widget">
                     <ul class="nav nav-tabs">
@@ -183,6 +194,7 @@
                                         <tr>
                                             <th>Name</th>
                                             <th>Course</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -191,6 +203,8 @@
                                             <tr>
                                                 <td>@activeLesson.LessonTitle</td>
                                                 <td>@activeLesson.Course.CourseName</td>
+                                                <td><a target="_blank" href="@Url.Action("Edit", "Lesson", new { id = activeLesson.LessonId })" class="btn btn-sm btn-warning admin__edit-btn" title="edit"><i class="fa fa-edit"></i></a><br />
+                                                <a target="_blank" href="@Url.Action("Delete", "Lesson", new { id = activeLesson.LessonId })" class="btn btn-sm btn-danger" title="delete"><i class="fa fa-trash-o"></i></a></td>
                                             </tr>
                                         }
                                     </tbody>
@@ -204,14 +218,17 @@
                                         <tr>
                                             <th>Name</th>
                                             <th>Course</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var inactiveLessons in ViewBag.InactiveLessons)
+                                        @foreach (var inactiveLesson in ViewBag.InactiveLessons)
                                         {
                                             <tr>
-                                                <td>@inactiveLessons.LessonTitle</td>
-                                                <td>@inactiveLessons.Course.CourseName</td>
+                                                <td>@inactiveLesson.LessonTitle</td>
+                                                <td>@inactiveLesson.Course.CourseName</td>
+                                                <td><a target="_blank" href="@Url.Action("Edit", "Lesson", new { id = inactiveLesson.LessonId })" class="btn btn-sm btn-warning admin__edit-btn" title="edit"><i class="fa fa-edit"></i></a><br />
+                                                <a target="_blank" href="@Url.Action("Delete", "Lesson", new { id = inactiveLesson.LessonId })" class="btn btn-sm btn-danger" title="delete"><i class="fa fa-trash-o"></i></a></td>
                                             </tr>
                                         }
                                     </tbody>

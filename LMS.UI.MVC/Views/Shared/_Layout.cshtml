@@ -104,6 +104,11 @@
                                 {
                                     <a href="@Url.Action("Manager", "Reports")" class="btn btn-default">View Assigned Employee Progress</a>
                                 }
+                                else if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                                {
+                                    <a href="@Url.Action("Admin", "Reports")" class="btn btn-default">Administrative</a>
+
+                                }
                                 else
                                 {
                                     <li><a class="btn btn-primary" href="@Url.Action("Register", "Account")"><i class="fa fa-sign-in"></i> Register Now</a></li>

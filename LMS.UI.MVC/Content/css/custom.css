@@ -77,3 +77,7 @@ a[alt]:hover:after {
 .manager-report__employee-name--link {
     cursor: pointer;
 }
+
+.admin__edit-btn {
+    margin-bottom: .5em;
+}
