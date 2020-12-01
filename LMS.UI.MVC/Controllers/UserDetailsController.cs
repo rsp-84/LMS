@@ -73,7 +73,7 @@ namespace LMS.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ReportsTo = new SelectList(db.UserDetails, "UserId", "FirstName", userDetail.ReportsTo);
+            ViewBag.ReportsTo = new SelectList(db.UserDetails, "UserId", "FullName", userDetail.ReportsTo);
             return View(userDetail);
         }
 

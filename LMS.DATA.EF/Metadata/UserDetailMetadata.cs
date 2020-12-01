@@ -28,5 +28,11 @@ namespace LMS.DATA.EF
     }
 
     [MetadataType(typeof(UserDetailMetadata))]
-    public partial class UserDetail { }
+    public partial class UserDetail
+    {
+        public string FullName
+        {
+            get { return $"{FirstName} {LastName}"; }
+        }
+    }
 }
