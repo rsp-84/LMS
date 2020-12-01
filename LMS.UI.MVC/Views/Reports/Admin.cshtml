@@ -4,6 +4,11 @@
     ViewBag.Title = "Admin";
 }
 
+@section styles
+{
+    <link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+}
+
 <section class="grey page-title">
     <div class="container">
         <div class="row">
@@ -47,63 +52,194 @@
                 </div>
             </div>
             <div id="course-content" class="col-md-9">
-                <div class="course-description">
-                    <h3 class="course-title">Managers</h3>
-                    <p>All current managers at A+ Inc.</p>
-                    <div class="row">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th># of Direct Reports</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var manager in Model.Where(x => x.ManagerId != null))
-                                {
-                                    <tr>
-                                        <td>@manager.ManagerFirstName @manager.ManagerLastName</td>
-                                        <td>@manager.NumOfDirectReports</td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
+                <div class="widget-title">
+                    <h4>Staff</h4>
+                </div>
+                <div class="tabbed-widget">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#home1">Managers</a></li>
+                        <li><a data-toggle="tab" href="#menu1">Employees</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="home1" class="tab-pane fade in active">
+                            <p>
+                                <table id="managers__table" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th># of Direct Reports</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var manager in Model.Where(x => x.ManagerId != null))
+                                        {
+                                            <tr>
+                                                <td>@manager.ManagerFirstName @manager.ManagerLastName</td>
+                                                <td>@manager.NumOfDirectReports</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </p>
+                        </div>
+                        <div id="menu1" class="tab-pane fade">
+                            <p>
+                                <table id="employees__table" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Reports To</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var employee in Model.Where(x => x.EmployeeId != null))
+                                        {
+                                            <tr>
+                                                <td>@employee.EmployeeFirstName @employee.EmployeeLastName</td>
+                                                @if (employee.EmployeeManagerName == "")
+                                                {
+                                                    <td><a href="@Url.Action("Edit", "UserDetails", new { id = employee.EmployeeId })" class="btn btn-small btn-primary">Assign</a></td>
+                                                }
+                                                else
+                                                {
+                                                    <td>@employee.EmployeeManagerName</td>
+                                                }
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-title">
+                    <h4>Courses <a href="#" class="btn btn-sm btn-primary">Manage <i class="fa fa-arrow-right"></i></a></h4>
+                </div>
+                <div class="tabbed-widget">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#home2">Active</a></li>
+                        <li><a data-toggle="tab" href="#menu2">Inactive</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="home2" class="tab-pane fade in active">
+                            <p>
+                                <table id="courses__active" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                            <th>Category</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var activeCourse in ViewBag.ActiveCourses)
+                                        {
+                                            <tr>
+                                                <td><a href="#">@activeCourse.CourseName</a></td>
+                                                <td>@activeCourse.CourseDescription</td>
+                                                <td>@activeCourse.Category</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </p>
+                        </div>
+                        <div id="menu2" class="tab-pane fade">
+                            <p>
+                                <table id="courses__inactive" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Category</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var inactiveCourse in ViewBag.InactiveCourses)
+                                        {
+                                            <tr>
+                                                <td>@inactiveCourse.CourseName</td>
+                                                <td>@inactiveCourse.Category</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </p>
+                        </div>
                     </div>
                 </div>
                 <hr />
-                <div class="course-description">
-                    <h3 class="course-title">Employees</h3>
-                    <p>All current employees at A+ Inc.</p>
-                    <div class="row">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Reports To</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var employee in Model.Where(x => x.EmployeeId != null))
-                                {
-                                    <tr>
-                                        <td>@employee.EmployeeFirstName @employee.EmployeeLastName</td>
-                                        @if (employee.EmployeeManagerName == "")
+                <div class="widget-title">
+                    <h4>Lessons <a href="#" class="btn btn-sm btn-primary">Manage <i class="fa fa-arrow-right"></i></a></h4>
+                </div>
+                <div class="tabbed-widget">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#home3">Active</a></li>
+                        <li><a data-toggle="tab" href="#menu3">Inactive</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="home3" class="tab-pane fade in active">
+                            <p>
+                                <table id="lessons__active" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Course</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var activeLesson in ViewBag.ActiveLessons)
                                         {
-                                            <td><a href="@Url.Action("Edit", "UserDetails", new { id = employee.EmployeeId })" class="btn btn-small btn-primary">Assign Manager</a></td>
+                                            <tr>
+                                                <td>@activeLesson.LessonTitle</td>
+                                                <td>@activeLesson.Course.CourseName</td>
+                                            </tr>
                                         }
-                                        else
+                                    </tbody>
+                                </table>
+                            </p>
+                        </div>
+                        <div id="menu3" class="tab-pane fade">
+                            <p>
+                                <table id="lessons__inactive" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Course</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var inactiveLessons in ViewBag.InactiveLessons)
                                         {
-                                            <td>@employee.EmployeeManagerName</td>
+                                            <tr>
+                                                <td>@inactiveLessons.LessonTitle</td>
+                                                <td>@inactiveLessons.Course.CourseName</td>
+                                            </tr>
                                         }
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
+                                    </tbody>
+                                </table>
+                            </p>
+                        </div>
                     </div>
                 </div>
-
             </div>
-        </div>
     </div>
 </section>
 
+@section scripts
+{
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#managers__table').DataTable();
+            $('#employees__table').DataTable();
+            $('#courses__active').DataTable();
+            $('#courses__inactive').DataTable();
+            $('#lessons__active').DataTable({
+                "order": [[1, "asc"]]
+            });
+            $('#lessons__inactive').DataTable({
+                "order": [[1, "asc"]]
+            });
+
+        });
+    </script>
+}

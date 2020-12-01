@@ -198,6 +198,12 @@ namespace LMS.UI.MVC.Controllers
             ViewBag.AdminImg = db.UserDetails.Find(loggedInAdmin).UserPhoto;
             ViewBag.AdminName = $"{db.UserDetails.Find(loggedInAdmin).FirstName} {db.UserDetails.Find(loggedInAdmin).LastName}";
 
+            //----- Bring Courses and Lessons into View
+            ViewBag.ActiveCourses = db.Courses.Where(x => x.IsActive == true);
+            ViewBag.InactiveCourses = db.Courses.Where(x => x.IsActive == false);
+
+            ViewBag.ActiveLessons = db.Lessons.Where(x => x.IsActive == true);
+            ViewBag.InactiveLessons = db.Lessons.Where(x => x.IsActive == false);
 
             return View(companyAdminVM);
         }
