@@ -19,7 +19,7 @@ namespace LMS.Controllers
         {
             ViewBag.CurrentUser = User.Identity.GetUserId();
 
-            return View(db.Courses.ToList());
+            return View(db.Courses.Where(x => x.IsActive == true).ToList());
         }
 
         [HttpGet]
