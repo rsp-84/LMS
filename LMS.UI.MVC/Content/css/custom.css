@@ -70,6 +70,11 @@ a[alt]:hover:after {
     width: auto;
 }
 
+.courses__completed--seperator::before {
+    content: "|";
+    margin-right: 1em;
+}
+
 .toggleVisible {
     display: none;
 }
@@ -81,3 +86,4 @@ a[alt]:hover:after {
 .admin__edit-btn {
     margin-bottom: .5em;
 }
+

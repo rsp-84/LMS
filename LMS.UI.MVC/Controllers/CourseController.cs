@@ -24,7 +24,7 @@ namespace LMS.UI.MVC.Controllers
         {
             ViewBag.CurrentUser = User.Identity.GetUserId();
 
-            return View(db.Courses.ToList());
+            return View(db.Courses.Where(x => x.IsActive == true).ToList());
         }
 
         // GET: Courses/Details/5

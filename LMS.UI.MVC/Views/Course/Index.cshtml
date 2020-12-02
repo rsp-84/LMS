@@ -28,9 +28,12 @@
                 <li><a href="#filter" class="selected" data-option-value="*"><i class="fa fa-filter"></i> All Courses</a></li>
                 <li><a href="#filter" data-option-value=".FrontEnd">Front End</a></li>
                 <li><a href="#filter" data-option-value=".MiddleTier">Middle Tier</a></li>
-                <li><a href="#filter" data-option-value=".Database">Database</a>&nbsp;&nbsp;&nbsp;&#124;</li>
-                <li><a href="#filter" data-option-value=".Completed">Completed</a></li>
-                <li><a href="#filter" data-option-value=".NotCompleted">Not Completed</a></li>
+                <li><a href="#filter" data-option-value=".Database">Database</a></li>
+                @if (Request.IsAuthenticated && User.IsInRole("Employee"))
+                {
+                    <li class="courses__completed--seperator"><a href="#filter" data-option-value=".Completed">Completed</a></li>
+                    <li><a href="#filter" data-option-value=".NotCompleted">Not Completed</a></li>
+                }
             </ul>
         </div>
         <div class="portfolio course-list">
