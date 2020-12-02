@@ -74,7 +74,7 @@
                                         @foreach (var manager in Model.Where(x => x.ManagerId != null))
                                         {
                                             <tr>
-                                                <td>@manager.ManagerFirstName @manager.ManagerLastName</td>
+                                                <td><a href="@Url.Action("Edit", "User", new { id = manager.ManagerId })">@manager.ManagerFirstName @manager.ManagerLastName</a></td>
                                                 <td>@manager.NumOfDirectReports</td>
                                             </tr>
                                         }
