@@ -87,3 +87,6 @@ a[alt]:hover:after {
     margin-bottom: .5em;
 }
 
+.usersadmin__submit-btn {
+    margin-top: 1em;
+}
