@@ -39,6 +39,10 @@ namespace LMS.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+            if (course.IsActive == false && !User.IsInRole("Admin"))
+            {
+                return RedirectToAction("../Home/Index");
+            }
 
             ViewBag.CurrentUserId = User.Identity.GetUserId();
 

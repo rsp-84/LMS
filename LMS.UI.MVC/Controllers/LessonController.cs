@@ -39,6 +39,10 @@ namespace LMS.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+            if (lesson.IsActive == false && !User.IsInRole("Admin"))
+            {
+                return RedirectToAction("../Home/Index");
+            }
 
             if (lesson.VideoURL != null)
             {
