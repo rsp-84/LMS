@@ -91,6 +91,7 @@ namespace LMS.UI.MVC.Controllers
                 return HttpNotFound();
             }
             ViewBag.Email = db.AspNetUsers.Find(userDetail.UserId).Email;
+            ViewBag.Role = db.AspNetUsers.Find(userDetail.UserId).AspNetRoles;
             ViewBag.ReportsTo = new SelectList(db.UserDetails, "UserId", "FullName", userDetail.ReportsTo);
             return View(userDetail);
         }

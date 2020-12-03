@@ -4,63 +4,185 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
 
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>UserDetail</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.UserId)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+<section class="grey page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-left">
+                <h1>Profile</h1>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ReportsTo, "ReportsTo", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ReportsTo", null, "-- Select --" , htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ReportsTo, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UserPhoto, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UserPhoto, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="col-md-6 text-right">
+                <div class="bread">
+                    <ol class="breadcrumb">
+                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                        <li><a href="@Url.Action("Index", "Courses")">Courses</a></li>
+                        @if (User.IsInRole("Employee"))
+                        {
+                            <li><a href="@Url.Action("Employee", "Reports")">Employee Report</a></li>}
+                        @if (User.IsInRole("Manager"))
+                        {
+                            <li><a href="@Url.Action("Manager", "Reports")">Manager Report</a></li>
+                        }
+                        <li class="active">Profile</li>
+                    </ol>
+                </div>
             </div>
         </div>
     </div>
-}
+</section>
+<section class="white section">
+    <div class="container">
+        <div class="row">
+            <div id="course-left-sidebar" class="col-md-3">
+                <div class="section-title employee-report__name">
+                    @if (Model.UserPhoto != null)
+                    {
+                        <div class="course-image-widget">
+                            <img src="~/content/images/user/@Model.UserPhoto" alt="@ViewBag.Name" class="img-responsive">
+                        </div>
+                    }
+                    else
+                    {
+                        <h4>Please add a photo to your profile!</h4>
+                    }
+                </div>
+                <div class="course-meta">
+                    <p>@ViewBag.Name</p>
+                    <hr>
+                    <p>Reports To <small class="label label-primary">@(ViewBag.ManagerName == null ? "Not Assigned" : ViewBag.ManagerName)</small></p>
+                    <hr>
+                </div>
+            </div>
+            <div id="course-content" class="col-md-9">
+                <div class="course-description">
+                    <h3 class="course-title">Profile</h3>
+                    <p>Review your profile. Please make sure to upload a current photo. The photo should be an appropriate business picture of the upper portion of your body or a headshot.</p>
+                    <div class="edit-profile">
+                        @using (Html.BeginForm("Edit", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(model => model.UserId)
+                            @Html.HiddenFor(model => model.UserPhoto)
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+                            <div class="form-group">
+                                <label>First Name</label>
+                                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", placeholder = Model.FirstName } })
+                                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", placeholder = Model.LastName } })
+                                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label>Reports To</label>
+                                @if (Model.ReportsTo == null)
+                                {
+                                    @Html.DropDownList("ReportsTo", null, "-- Select --", htmlAttributes: new { @class = "form-control" })
+                                }
+                                else
+                                {
+                                    @Html.DropDownList("ReportsTo", null, htmlAttributes: new { @class = "form-control" })
+                                }
+                            </div>
+                            <div class="form-group">
+                                <a href="@Url.Action("Edit", "UsersAdmin", new { id = Model.UserId })" class="btn btn-primary">Manage Email: @ViewBag.Email</a>
+                                <a href="@Url.Action("Edit", "UsersAdmin", new { id = Model.UserId })" class="btn btn-primary">
+                                    Manage Role:
+                                    @foreach (var item in ViewBag.Role)
+                                    {
+                                        <span>@item.Name </span>
+                                    }
+                                </a>
+                            </div>
+                            <div class="form-group">
+                                <p>
+                                    @if (Model.UserPhoto == null)
+                                    {
+                                        <label>No Image Saved!</label>
+                                    }
+                                </p>
+                                <p>
+                                    <label>Upload Photo</label>
+                                    <input type="file" class="btn btn-primary" name="userImg">
+                                </p>
+                            </div>
+                            <button type="submit" class="btn btn-default">Save Changes</button>
+                        }
+                        @if (User.IsInRole("Employee"))
+                        {
+                            <a href="@Url.Action("Employee", "Reports")" class="btn btn-primary pull-right">Employee Report</a>
+                        }
+                        @if (User.IsInRole("Manager"))
+                        {
+                            <a href="@Url.Action("Manager", "Reports")" class="btn btn-primary pull-right">Manager Report</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+
+@*<h2>Edit</h2>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>UserDetail</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.UserId)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ReportsTo, "ReportsTo", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ReportsTo", null, "-- Select --", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ReportsTo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UserPhoto, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserPhoto, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
+
