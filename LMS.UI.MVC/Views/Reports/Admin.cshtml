@@ -138,8 +138,17 @@
                                                 <td><a target="_blank" href="@Url.Action("Details", "Course", new { id = activeCourse.CourseId })">@activeCourse.CourseName</a></td>
                                                 <td>@activeCourse.CourseDescription</td>
                                                 <td>@activeCourse.Category</td>
-                                                <td><a target="_blank" href="@Url.Action("Edit", "Course", new { id = activeCourse.CourseId })" class="btn btn-sm btn-warning admin__edit-btn" title="edit"><i class="fa fa-edit"></i></a>
-                                                <a target="_blank" href="@Url.Action("Delete", "Course", new { id = activeCourse.CourseId })" class="btn btn-sm btn-danger" title="delete"><i class="fa fa-trash-o"></i></a></td>
+                                                <td>
+                                                    <a target="_blank" href="@Url.Action("Edit", "Course", new { id = activeCourse.CourseId })" class="btn btn-sm btn-warning admin__edit-btn" title="edit"><i class="fa fa-edit"></i></a>
+                                                    @if (activeCourse.Lessons.Count > 0)
+                                                    {
+                                                        <a target="_blank" href="@Url.Action("Delete", "Course", new { id = activeCourse.CourseId, @class = "disabled"})" class="btn btn-sm btn-danger disabled" title="delete"><i class="fa fa-trash-o"></i></a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a target="_blank" href="@Url.Action("Delete", "Course", new { id = activeCourse.CourseId })" class="btn btn-sm btn-danger" title="delete"><i class="fa fa-trash-o"></i></a>
+                                                    }
+                                                </td>
                                             </tr>
                                         }
                                     </tbody>
@@ -155,7 +164,7 @@
                                             <th>Description</th>
                                             <th>Category</th>
                                             <th></th>
-                                            
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -167,7 +176,14 @@
                                                 <td>@inactiveCourse.Category</td>
                                                 <td>
                                                     <a target="_blank" href="@Url.Action("Edit", "Course", new { id = inactiveCourse.CourseId })" class="btn btn-sm btn-warning admin__edit-btn" title="edit"><i class="fa fa-edit"></i></a>
-                                                    <a target="_blank" href="@Url.Action("Delete", "Course", new { id = inactiveCourse.CourseId })" class="btn btn-sm btn-danger" title="delete"><i class="fa fa-trash-o"></i></a>
+                                                    @if (inactiveCourse.Lessons.Count > 0)
+                                                    {
+                                                        <a target="_blank" href="@Url.Action("Delete", "Course", new { id = inactiveCourse.CourseId, @class = "disabled"})" class="btn btn-sm btn-danger disabled" title="delete"><i class="fa fa-trash-o"></i></a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a target="_blank" href="@Url.Action("Delete", "Course", new { id = inactiveCourse.CourseId })" class="btn btn-sm btn-danger" title="delete"><i class="fa fa-trash-o"></i></a>
+                                                    }
                                                 </td>
                                             </tr>
                                         }
@@ -203,8 +219,10 @@
                                             <tr>
                                                 <td><a target="_blank" href="@Url.Action("Details", "Lesson", new { id = activeLesson.LessonId })">@activeLesson.LessonTitle</a></td>
                                                 <td>@activeLesson.Course.CourseName</td>
-                                                <td><a target="_blank" href="@Url.Action("Edit", "Lesson", new { id = activeLesson.LessonId })" class="btn btn-sm btn-warning admin__edit-btn" title="edit"><i class="fa fa-edit"></i></a><br />
-                                                <a target="_blank" href="@Url.Action("Delete", "Lesson", new { id = activeLesson.LessonId })" class="btn btn-sm btn-danger" title="delete"><i class="fa fa-trash-o"></i></a></td>
+                                                <td>
+                                                    <a target="_blank" href="@Url.Action("Edit", "Lesson", new { id = activeLesson.LessonId })" class="btn btn-sm btn-warning admin__edit-btn" title="edit"><i class="fa fa-edit"></i></a><br />
+                                                    <a target="_blank" href="@Url.Action("Delete", "Lesson", new { id = activeLesson.LessonId })" class="btn btn-sm btn-danger" title="delete"><i class="fa fa-trash-o"></i></a>
+                                                </td>
                                             </tr>
                                         }
                                     </tbody>
@@ -227,8 +245,10 @@
                                             <tr>
                                                 <td><a target="_blank" href="@Url.Action("Details", "Lesson", new { id = inactiveLesson.LessonId })">@inactiveLesson.LessonTitle</a></td>
                                                 <td>@inactiveLesson.Course.CourseName</td>
-                                                <td><a target="_blank" href="@Url.Action("Edit", "Lesson", new { id = inactiveLesson.LessonId })" class="btn btn-sm btn-warning admin__edit-btn" title="edit"><i class="fa fa-edit"></i></a><br />
-                                                <a target="_blank" href="@Url.Action("Delete", "Lesson", new { id = inactiveLesson.LessonId })" class="btn btn-sm btn-danger" title="delete"><i class="fa fa-trash-o"></i></a></td>
+                                                <td>
+                                                    <a target="_blank" href="@Url.Action("Edit", "Lesson", new { id = inactiveLesson.LessonId })" class="btn btn-sm btn-warning admin__edit-btn" title="edit"><i class="fa fa-edit"></i></a><br />
+                                                    <a target="_blank" href="@Url.Action("Delete", "Lesson", new { id = inactiveLesson.LessonId })" class="btn btn-sm btn-danger" title="delete"><i class="fa fa-trash-o"></i></a>
+                                                </td>
                                             </tr>
                                         }
                                     </tbody>
@@ -238,7 +258,7 @@
                     </div>
                 </div>
             </div>
-    </div>
+        </div>
 </section>
 
 @section scripts

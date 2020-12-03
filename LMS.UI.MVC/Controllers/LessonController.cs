@@ -226,7 +226,7 @@ namespace LMS.UI.MVC.Controllers
 
                 db.Lessons.Add(lesson);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("../Reports/Admin");
             }
 
             ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", lesson.CourseId);
