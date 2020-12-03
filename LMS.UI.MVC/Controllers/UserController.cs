@@ -90,7 +90,9 @@ namespace LMS.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ReportsTo = new SelectList(db.UserDetails, "UserId", "FirstName", userDetail.ReportsTo);
+            ViewBag.Email = db.AspNetUsers.Find(userDetail.UserId).Email;
+            ViewBag.Role = db.AspNetUsers.Find(userDetail.UserId).AspNetRoles;
+            ViewBag.ReportsTo = new SelectList(db.UserDetails, "UserId", "FullName", userDetail.ReportsTo);
             return View(userDetail);
         }
 
@@ -155,13 +157,17 @@ namespace LMS.UI.MVC.Controllers
 
                     }//and extgood if
 
-                    db.Entry(userDetail).State = EntityState.Modified;
-                    db.SaveChanges();
-
                 }//end if !=null
-                //HiddenFor() is used here (if the file information is not valid) OR if it fails the ext & size check
+                 //HiddenFor() is used here (if the file information is not valid) OR if it fails the ext & size check
                 #endregion
 
+                db.Entry(userDetail).State = EntityState.Modified;
+                db.SaveChanges();
+
+                if (User.IsInRole("Admin"))
+                {
+                    return RedirectToAction("../Reports/Admin");
+                }
                 return RedirectToAction("Index");
             }
             ViewBag.ReportsTo = new SelectList(db.UserDetails, "UserId", "FirstName", userDetail.ReportsTo);

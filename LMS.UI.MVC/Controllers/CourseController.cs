@@ -24,7 +24,7 @@ namespace LMS.UI.MVC.Controllers
         {
             ViewBag.CurrentUser = User.Identity.GetUserId();
 
-            return View(db.Courses.ToList());
+            return View(db.Courses.Where(x => x.IsActive == true).ToList());
         }
 
         // GET: Courses/Details/5
@@ -38,6 +38,10 @@ namespace LMS.UI.MVC.Controllers
             if (course == null)
             {
                 return HttpNotFound();
+            }
+            if (course.IsActive == false && !User.IsInRole("Admin"))
+            {
+                return RedirectToAction("../Home/Index");
             }
 
             ViewBag.CurrentUserId = User.Identity.GetUserId();
@@ -98,7 +102,7 @@ namespace LMS.UI.MVC.Controllers
 
                 db.Courses.Add(course);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("../Reports/Admin");
             }
 
             return View(course);
@@ -164,7 +168,7 @@ namespace LMS.UI.MVC.Controllers
 
                 db.Entry(course).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("../Reports/Admin");
             }
             return View(course);
         }
@@ -192,12 +196,16 @@ namespace LMS.UI.MVC.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Course course = db.Courses.Find(id);
-            db.Courses.Remove(course);
+            if (course.Lessons.Count < 1)
+            {
+                db.Courses.Remove(course);
 
-            ImageService.Delete(Server.MapPath("~/Content/images/courses/"), course.CourseImg);
+                ImageService.Delete(Server.MapPath("~/Content/images/courses/"), course.CourseImg);
 
-            db.SaveChanges();
-            return RedirectToAction("Index");
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("../Reports/Admin");
         }
 
         protected override void Dispose(bool disposing)

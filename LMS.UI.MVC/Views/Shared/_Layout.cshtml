@@ -104,6 +104,11 @@
                                 {
                                     <a href="@Url.Action("Manager", "Reports")" class="btn btn-default">View Assigned Employee Progress</a>
                                 }
+                                else if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                                {
+                                    <a href="@Url.Action("Admin", "Reports")" class="btn btn-default">Administrative</a>
+
+                                }
                                 else
                                 {
                                     <li><a class="btn btn-primary" href="@Url.Action("Register", "Account")"><i class="fa fa-sign-in"></i> Register Now</a></li>
@@ -122,12 +127,6 @@
                 <div class="row">
                     <div class="col-md-6 text-left">
                         <p><a target="_blank" href="https://www.linkedin.com/in/ryan-p-dev/">Ryan Pflugradt</a>, @DateTime.Now.Year</p>
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <ul class="list-inline">
-                            <!-- TODO: make sitemap or not? -->
-                            <li><a href="#">Sitemap</a></li>
-                        </ul>
                     </div>
                 </div>
             </div>

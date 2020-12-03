@@ -44,7 +44,7 @@
                             @Model.Introduction
                         </p>
                         <p>
-                            @if (User.IsInRole("Manager")){ }
+                            @if (User.IsInRole("Manager") || User.IsInRole("Admin")) { }
                             else if (Model.LessonViews.Where(x => x.LessonId == Model.LessonId && ViewBag.CurrentUserId == x.UserId).Count() < 1)
                             {
                                 using (Html.BeginForm("Details", "Lesson"))
@@ -66,7 +66,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if (User.IsInRole("Manager"))
+                                    @if (User.IsInRole("Manager") || User.IsInRole("Admin"))
                                     {
                                         foreach (var lesson in Model.Course.Lessons)
                                         {
@@ -80,7 +80,7 @@
                                             }
                                             <tr>
                                                 <td><i class="fa @docType"></i></td>
-                                                <td><a href="@Url.Action("Details", "Lesson", new { id = lesson.GenerateSlug() })"><span class="btn btn-sm btn-primary">Manager Review</span> @lesson.LessonTitle</a></td>
+                                                <td><a href="@Url.Action("Details", "Lesson", new { id = lesson.GenerateSlug() })"><span class="btn btn-sm btn-primary">Review</span> @lesson.LessonTitle</a></td>
                                                 <td><i class="fa fa-check")"></i></td>
                                             </tr>
 

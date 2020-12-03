@@ -1,6 +1,7 @@
 ﻿using LMS.DATA.EF;
 using LMS.UI.MVC.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -147,6 +148,64 @@ namespace LMS.UI.MVC.Controllers
             ViewBag.ManagerName = $"{db.UserDetails.Find(loggedInManager).FirstName} {db.UserDetails.Find(loggedInManager).LastName}";
 
             return View(managerReportIndexVM);
+        }
+
+        // GET: Admin
+        [Authorize(Roles = "Admin")]
+        public ActionResult Admin()
+        {
+            //Logged in admin
+            var loggedInAdmin = User.Identity.GetUserId();
+
+            //get data
+            List<CompanyAdminViewModel> companyAdminVM = new List<CompanyAdminViewModel>();
+
+            var managers = db.AspNetUsers
+                  .Where(u => u.AspNetRoles.Any(r => r.Name == "Manager"))
+                  .ToList();
+
+            var employees = db.AspNetUsers
+                  .Where(u => u.AspNetRoles.Any(r => r.Name == "Employee"))
+                  .ToList();
+
+            //Build VM
+            foreach (var item in managers)
+            {
+                CompanyAdminViewModel objAdmVM = new CompanyAdminViewModel();
+
+                objAdmVM.ManagerId = item.Id;
+                objAdmVM.ManagerFirstName = db.UserDetails.Find(item.Id).FirstName;
+                objAdmVM.ManagerLastName = db.UserDetails.Find(item.Id).LastName;
+                objAdmVM.NumOfDirectReports = db.UserDetails.Where(x => x.ReportsTo == item.Id).Count();
+
+                companyAdminVM.Add(objAdmVM);
+            }
+            foreach (var item in employees)
+            {
+                CompanyAdminViewModel objAdmVM = new CompanyAdminViewModel();
+
+                objAdmVM.EmployeeId = item.Id;
+                objAdmVM.EmployeeFirstName = db.UserDetails.Find(item.Id).FirstName;
+                objAdmVM.EmployeeLastName = db.UserDetails.Find(item.Id).LastName;
+                string managerId = db.UserDetails.Find(item.Id).ReportsTo;
+                objAdmVM.EmployeeManagerName = managerId != null ? $"{db.UserDetails.Find(managerId).FirstName} {db.UserDetails.Find(managerId).LastName}" : "";
+
+                companyAdminVM.Add(objAdmVM);
+            }
+
+            ViewBag.NumOfManagers = managers.Count;
+            ViewBag.NumOfEmployees = employees.Count;
+            ViewBag.AdminImg = db.UserDetails.Find(loggedInAdmin).UserPhoto;
+            ViewBag.AdminName = $"{db.UserDetails.Find(loggedInAdmin).FirstName} {db.UserDetails.Find(loggedInAdmin).LastName}";
+
+            //----- Bring Courses and Lessons into View
+            ViewBag.ActiveCourses = db.Courses.Where(x => x.IsActive == true);
+            ViewBag.InactiveCourses = db.Courses.Where(x => x.IsActive == false);
+
+            ViewBag.ActiveLessons = db.Lessons.Where(x => x.IsActive == true);
+            ViewBag.InactiveLessons = db.Lessons.Where(x => x.IsActive == false);
+
+            return View(companyAdminVM);
         }
 
         protected override void Dispose(bool disposing)

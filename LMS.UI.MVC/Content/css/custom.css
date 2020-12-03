@@ -70,10 +70,23 @@ a[alt]:hover:after {
     width: auto;
 }
 
+.courses__completed--seperator::before {
+    content: "|";
+    margin-right: 1em;
+}
+
 .toggleVisible {
     display: none;
 }
 
 .manager-report__employee-name--link {
     cursor: pointer;
+}
+
+.admin__edit-btn {
+    margin-bottom: .5em;
+}
+
+.usersadmin__submit-btn {
+    margin-top: 1em;
 }

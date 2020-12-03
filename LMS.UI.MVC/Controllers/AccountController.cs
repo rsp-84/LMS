@@ -158,7 +158,6 @@ namespace LMS.Controllers
                     newUserDetail.UserId = user.Id;
                     newUserDetail.FirstName = model.FirstName;
                     newUserDetail.LastName = model.LastName;
-                    //newUserDetail.ResumeFile = model.ResumeFile;//--TODO: handle file upload
                     LMSEntities db = new LMSEntities();
                     db.UserDetails.Add(newUserDetail);
                     db.SaveChanges();
@@ -168,7 +167,11 @@ namespace LMS.Controllers
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
                     ViewBag.Link = callbackUrl;
-                    return View("DisplayEmail");
+                    //return View("DisplayEmail");
+
+                    SignInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
+                    return RedirectToAction("../Home/Index");
+
                 }
                 AddErrors(result);
             }

@@ -36,7 +36,8 @@
                     <p class="course-forum">Category : @Model.Category</p><!-- TODO: Add a space -->
                 </div>
                 <div class="course-button">
-                    @if (Request.IsAuthenticated && User.IsInRole("Manager"))
+                    @if (Request.IsAuthenticated && User.IsInRole("Manager")
+                        || Request.IsAuthenticated && User.IsInRole("Admin"))
                     {
                         <a href="" id="takeThisCourse" class="btn btn-primary btn-block">REVIEW THIS COURSE</a>
                     }
@@ -83,7 +84,8 @@
                                     docType = string.Empty;
                                 }
                             }
-                            else if (Request.IsAuthenticated && User.IsInRole("Manager"))
+                            else if (Request.IsAuthenticated && User.IsInRole("Manager")
+                                || Request.IsAuthenticated && User.IsInRole("Admin"))
                             {
                                 foreach (var lesson in Model.Lessons)
                                 {
@@ -97,7 +99,7 @@
                                     }
                                     <tr>
                                         <td><i class="fa @docType"></i></td>
-                                        <td><a href="@Url.Action("Details", "Lesson", new { id = lesson.GenerateSlug() })" class="takeThisCourseClass"><span class="btn btn-sm btn-primary">Manager Review</span> @lesson.LessonTitle</a></td>
+                                        <td><a href="@Url.Action("Details", "Lesson", new { id = lesson.GenerateSlug() })" class="takeThisCourseClass"><span class="btn btn-sm btn-primary">Review</span> @lesson.LessonTitle</a></td>
                                         <td><i class="fa fa-check"></i></td>
                                     </tr>
 

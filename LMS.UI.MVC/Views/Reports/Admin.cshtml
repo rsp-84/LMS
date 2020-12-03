@@ -1,0 +1,282 @@
+﻿@model IEnumerable<LMS.UI.MVC.Models.CompanyAdminViewModel>
+
+@{
+    ViewBag.Title = "Admin";
+}
+
+@section styles
+{
+    <link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+}
+
+<section class="grey page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-left">
+                <h1>Administrative</h1>
+            </div>
+            <div class="col-md-6 text-right">
+                <div class="bread">
+                    <ol class="breadcrumb">
+                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                        <li class="active">Administrative</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="white section">
+    <div class="container">
+        <div class="row">
+            <div id="course-left-sidebar" class="col-md-3">
+                <div class="section-title employee-report__name">
+                    @if (ViewBag.AdminImg != null)
+                    {
+                        <div class="course-image-widget">
+                            <img src="~/Content/images/user/@ViewBag.AdminImg" alt="@ViewBag.AdminName" class="img-responsive">
+                        </div>
+                    }
+                    else
+                    {
+                        <h4>Please add a photo to your profile!</h4>
+                    }
+                </div>
+                <div class="course-meta">
+                    <p>@ViewBag.AdminName <small><a href="@Url.Action("Index", "User")">edit</a></small></p>
+                    <hr>
+                    <p># of Managers <small class="label label-primary">@ViewBag.NumOfManagers</small></p>
+                    <hr>
+                    <p># of Employees <small class="label label-primary">@ViewBag.NumOfEmployees</small></p>
+                    <hr>
+                </div>
+            </div>
+            <div id="course-content" class="col-md-9">
+                <div class="widget-title">
+                    <h4>Staff</h4>
+                </div>
+                <div class="tabbed-widget">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#home1">Managers</a></li>
+                        <li><a data-toggle="tab" href="#menu1">Employees</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="home1" class="tab-pane fade in active">
+                            <p>
+                                <table id="managers__table" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th># of Direct Reports</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var manager in Model.Where(x => x.ManagerId != null))
+                                        {
+                                            <tr>
+                                                <td><a href="@Url.Action("Edit", "User", new { id = manager.ManagerId })">@manager.ManagerFirstName @manager.ManagerLastName</a></td>
+                                                <td>@manager.NumOfDirectReports</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </p>
+                        </div>
+                        <div id="menu1" class="tab-pane fade">
+                            <p>
+                                <table id="employees__table" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Reports To</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var employee in Model.Where(x => x.EmployeeId != null))
+                                        {
+                                            <tr>
+                                                <td><a href="@Url.Action("Edit", "User", new { id = employee.EmployeeId })">@employee.EmployeeFirstName @employee.EmployeeLastName</a></td>
+                                                @if (employee.EmployeeManagerName == "")
+                                                {
+                                                    <td><a href="@Url.Action("Edit", "UserDetails", new { id = employee.EmployeeId })" class="btn btn-small btn-primary">Assign</a></td>
+                                                }
+                                                else
+                                                {
+                                                    <td>@employee.EmployeeManagerName</td>
+                                                }
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-title">
+                    <h4>Courses <a href="@Url.Action("Create", "Course")" class="btn btn-sm btn-primary">Create <i class="fa fa-arrow-right"></i></a></h4>
+                </div>
+                <div class="tabbed-widget">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#home2">Active</a></li>
+                        <li><a data-toggle="tab" href="#menu2">Inactive</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="home2" class="tab-pane fade in active">
+                            <p>
+                                <table id="courses__active" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                            <th>Category</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var activeCourse in ViewBag.ActiveCourses)
+                                        {
+                                            <tr>
+                                                <td><a href="@Url.Action("Details", "Course", new { id = activeCourse.CourseId })">@activeCourse.CourseName</a></td>
+                                                <td>@activeCourse.CourseDescription</td>
+                                                <td>@activeCourse.Category</td>
+                                                <td>
+                                                    <a href="@Url.Action("Edit", "Course", new { id = activeCourse.CourseId })" class="btn btn-sm btn-warning admin__edit-btn" title="edit"><i class="fa fa-edit"></i></a>
+                                                    @if (activeCourse.Lessons.Count > 0)
+                                                    {
+                                                        <a href="@Url.Action("Delete", "Course", new { id = activeCourse.CourseId, @class = "disabled"})" class="btn btn-sm btn-danger disabled" title="delete"><i class="fa fa-trash-o"></i></a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="@Url.Action("Delete", "Course", new { id = activeCourse.CourseId })" class="btn btn-sm btn-danger" title="delete"><i class="fa fa-trash-o"></i></a>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </p>
+                        </div>
+                        <div id="menu2" class="tab-pane fade">
+                            <p>
+                                <table id="courses__inactive" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                            <th>Category</th>
+                                            <th></th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var inactiveCourse in ViewBag.InactiveCourses)
+                                        {
+                                            <tr>
+                                                <td><a href="@Url.Action("Details", "Course", new { id = inactiveCourse.CourseId })">@inactiveCourse.CourseName</a></td>
+                                                <td>@inactiveCourse.CourseDescription</td>
+                                                <td>@inactiveCourse.Category</td>
+                                                <td>
+                                                    <a href="@Url.Action("Edit", "Course", new { id = inactiveCourse.CourseId })" class="btn btn-sm btn-warning admin__edit-btn" title="edit"><i class="fa fa-edit"></i></a>
+                                                    @if (inactiveCourse.Lessons.Count > 0)
+                                                    {
+                                                        <a href="@Url.Action("Delete", "Course", new { id = inactiveCourse.CourseId, @class = "disabled"})" class="btn btn-sm btn-danger disabled" title="delete"><i class="fa fa-trash-o"></i></a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="@Url.Action("Delete", "Course", new { id = inactiveCourse.CourseId })" class="btn btn-sm btn-danger" title="delete"><i class="fa fa-trash-o"></i></a>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="widget-title">
+                    <h4>Lessons  <a href="@Url.Action("Create", "Lesson")" class="btn btn-sm btn-primary">Create <i class="fa fa-arrow-right"></i></a></h4>
+                </div>
+                <div class="tabbed-widget">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#home3">Active</a></li>
+                        <li><a data-toggle="tab" href="#menu3">Inactive</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="home3" class="tab-pane fade in active">
+                            <p>
+                                <table id="lessons__active" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Course</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var activeLesson in ViewBag.ActiveLessons)
+                                        {
+                                            <tr>
+                                                <td><a href="@Url.Action("Details", "Lesson", new { id = activeLesson.LessonId })">@activeLesson.LessonTitle</a></td>
+                                                <td>@activeLesson.Course.CourseName</td>
+                                                <td>
+                                                    <a href="@Url.Action("Edit", "Lesson", new { id = activeLesson.LessonId })" class="btn btn-sm btn-warning admin__edit-btn" title="edit"><i class="fa fa-edit"></i></a><br />
+                                                    <a href="@Url.Action("Delete", "Lesson", new { id = activeLesson.LessonId })" class="btn btn-sm btn-danger" title="delete"><i class="fa fa-trash-o"></i></a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </p>
+                        </div>
+                        <div id="menu3" class="tab-pane fade">
+                            <p>
+                                <table id="lessons__inactive" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Course</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var inactiveLesson in ViewBag.InactiveLessons)
+                                        {
+                                            <tr>
+                                                <td><a href="@Url.Action("Details", "Lesson", new { id = inactiveLesson.LessonId })">@inactiveLesson.LessonTitle</a></td>
+                                                <td>@inactiveLesson.Course.CourseName</td>
+                                                <td>
+                                                    <a href="@Url.Action("Edit", "Lesson", new { id = inactiveLesson.LessonId })" class="btn btn-sm btn-warning admin__edit-btn" title="edit"><i class="fa fa-edit"></i></a><br />
+                                                    <a href="@Url.Action("Delete", "Lesson", new { id = inactiveLesson.LessonId })" class="btn btn-sm btn-danger" title="delete"><i class="fa fa-trash-o"></i></a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+@section scripts
+{
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#managers__table').DataTable();
+            $('#employees__table').DataTable();
+            $('#courses__active').DataTable();
+            $('#courses__inactive').DataTable();
+            $('#lessons__active').DataTable({
+                "order": [[1, "asc"]]
+            });
+            $('#lessons__inactive').DataTable({
+                "order": [[1, "asc"]]
+            });
+
+        });
+    </script>
+}

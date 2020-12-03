@@ -39,6 +39,10 @@ namespace LMS.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+            if (lesson.IsActive == false && !User.IsInRole("Admin"))
+            {
+                return RedirectToAction("../Home/Index");
+            }
 
             if (lesson.VideoURL != null)
             {
@@ -222,7 +226,7 @@ namespace LMS.UI.MVC.Controllers
 
                 db.Lessons.Add(lesson);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("../Reports/Admin");
             }
 
             ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", lesson.CourseId);
