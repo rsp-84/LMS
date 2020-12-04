@@ -6,12 +6,9 @@
     top: -36px;
 }
 
-.jumbotron__logo {
-
-}
-
 .jumbotron__call-to-action {
     margin-top: 128px;
+    background: rgba(255,255,255,.8) ;
 }
 
 .jumbotron__call-to-action--btn {
