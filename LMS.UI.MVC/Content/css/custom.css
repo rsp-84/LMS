@@ -89,3 +89,7 @@ a[alt]:hover:after {
 .account-login__container {
     margin-bottom: 79px;
 }
+
+.login-wrapper {
+    padding-top: 0;
+}

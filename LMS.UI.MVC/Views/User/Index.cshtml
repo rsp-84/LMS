@@ -67,7 +67,7 @@
                             <input type="email" class="form-control" placeholder="@ViewBag.Email" readonly>
                         </div>
                         <div class="form-group">
-                            <a href="@Url.Action("Index", "Manage")" class="btn btn-primary">Manage Password</a>
+                            <a target="_blank" href="@Url.Action("ChangePassword", "Manage")" class="btn btn-primary">Manage Password</a>
                         </div>
                         @using (Html.BeginForm("Edit", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
