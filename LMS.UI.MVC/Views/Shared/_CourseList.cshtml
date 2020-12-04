@@ -2,28 +2,25 @@
 
 @foreach (var course in Model)
 {
-    <!-- TODO: Fix category format, add space -->
+    string courseCategory = course.Category;
+    courseCategory = string.Concat(courseCategory.Select(x => Char.IsUpper(x) ? " " + x : x.ToString())).TrimStart(' ');
+
     if (course.CourseCompletions.Where(x => x.CourseId == course.CourseId && x.UserId == ViewBag.CurrentUser).Count() > 0)
     {
         <div class="item @course.Category Completed">
             <div class="shop-item-list entry">
                 <div class="">
                     <img src="~/content/images/courses/@course.CourseImg" alt="@course.CourseName" class="class-list__image--size image__greyscale--100">
-                    @*<div class="magnifier">
-                        </div>*@
                 </div>
                 <div class="shop-item-title clearfix">
                     <h4><a href="@Url.Action("Details", "Course", new { id = course.GenerateSlug() })" alt="Completed: review only"><span class="text-muted">@course.CourseName</span> <i class="fa fa-check-square-o" style="color: green;"></i></a></h4>
                     <div class="shopmeta">
                         <span class="pull-left">Category</span>
                         <div class="rating pull-right">
-                            <span class="text-muted">@course.Category</span>
+                            <span class="text-muted">@courseCategory</span>
                         </div>
                     </div>
                 </div>
-                @*<div class="visible-buttons">
-                        <a alt="Completed: review only" href="@Url.Action("Details", "Courses", new { id = course.CourseId })"><span class="fa fa-search"></span></a>
-                    </div>*@
             </div>
         </div>
     }
@@ -41,7 +38,7 @@
                     <div class="shopmeta">
                         <span class="pull-left">Category</span>
                         <div class="rating pull-right">
-                            <span>@course.Category</span>
+                            <span>@courseCategory</span>
                         </div>
                     </div>
                 </div>
