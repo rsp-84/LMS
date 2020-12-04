@@ -1,7 +1,7 @@
 ﻿@model LMS.DATA.EF.Course
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.CourseName;
     string docType = String.Empty;
     string courseCategory = Model.Category;
     courseCategory = string.Concat(courseCategory.Select(x => Char.IsUpper(x) ? " " + x : x.ToString())).TrimStart(' ');
@@ -17,7 +17,7 @@
                 <div class="bread">
                     <ol class="breadcrumb">
                         <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-                        <li><a href="@Url.Action("Index", "Course")">Courses</a></li>
+                        <li><a href="@Url.Action("Index", "Course")">Course List</a></li>
                         <li class="active">@Model.CourseName</li>
                     </ol>
                 </div>
