@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<LMS.DATA.EF.Course>
 
 @{
-    ViewBag.Title = "Courses";
+    ViewBag.Title = "Course List";
 }
 
 <section class="grey page-title">
@@ -14,7 +14,7 @@
                 <div class="bread">
                     <ol class="breadcrumb">
                         <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-                        <li class="active">Courses</li>
+                        <li class="active">Course List</li>
                     </ol>
                 </div>
             </div>
@@ -49,65 +49,3 @@
         (function ($) { "use strict"; $(window).load(function () { $('.portfolio').isotope({ itemSelector: '.item', layoutMode: 'fitRows' }); $('#filters a.selected').trigger("click"); }); $('#filters a').click(function (e) { e.preventDefault(); var selector = $(this).attr('data-option-value'); $('.portfolio').isotope({ filter: selector }); $(this).parents('ul').find('a').removeClass('selected'); $(this).addClass('selected'); }); jQuery(document).ready(function ($) { $(window).resize(); $Filter.find('a').click(function () { $Filter.find('ul li').not($(this)).removeClass('active'); $(this).parent('li').addClass('active'); }); }); })(jQuery);
     </script>
 }
-
-
-
-
-
-
-<!-- TODO: Clean up saved code later-->
-@* Old code for index save for now *@
-@*<div class="container">
-        <h2>Index</h2>
-
-        <p>
-            @Html.ActionLink("Create New", "Create")
-        </p>
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.CourseName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CourseDescription)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IsActive)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Category)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CourseImg)
-                </th>
-                <th></th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CourseName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CourseDescription)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IsActive)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Category)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CourseImg)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.CourseId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.CourseId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.CourseId })
-                    </td>
-                </tr>
-            }
-
-        </table>
-    </div>*@
