@@ -538,7 +538,6 @@
     <Content Include="_archive\rs-plugin\font\revicons90c6.ttf" />
     <Content Include="_archive\rs-plugin\font\revicons90c6.woff" />
     <Content Include="Views\Home\EmailConfirmation.cshtml" />
-    <Content Include="Views\Home\Courses.cshtml" />
     <Content Include="Views\Course\Create.cshtml" />
     <Content Include="Views\Course\Delete.cshtml" />
     <Content Include="Views\Course\Details.cshtml" />
