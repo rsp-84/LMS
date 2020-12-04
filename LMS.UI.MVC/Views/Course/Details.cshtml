@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Details";
     string docType = String.Empty;
+    string courseCategory = Model.Category;
+    courseCategory = string.Concat(courseCategory.Select(x => Char.IsUpper(x) ? " " + x : x.ToString())).TrimStart(' ');
 }
 
 <section class="grey page-title">
@@ -23,7 +25,7 @@
         </div>
     </div>
 </section>
-<section class="white section">
+<section class="white section course-details__grid">
     <div class="container">
         <div class="row">
             <div id="course-left-sidebar" class="col-md-4">
@@ -33,7 +35,7 @@
                 <div class="course-meta">
                     <p class="course-category">Class : @Model.CourseName</p>
                     <hr>
-                    <p class="course-forum">Category : @Model.Category</p><!-- TODO: Add a space -->
+                    <p class="course-forum">Category : @courseCategory</p>
                 </div>
                 <div class="course-button">
                     @if (Request.IsAuthenticated && User.IsInRole("Manager")
@@ -50,7 +52,7 @@
             <div id="course-content" class="col-md-8">
                 <div class="course-description">
                     <h3 class="course-title">@Model.CourseName</h3>
-                    <p>@Model.CourseDescription</p><!-- TODO: add a larger description in DB -->
+                    <p>@Model.CourseDescription</p>
                 </div>
                 <div class="course-table">
                     <h4>Course Lessons</h4>
@@ -156,76 +158,3 @@
         });
     </script>
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- TODO: Clean up saved code later-->
-@* Old code for index save for now *@
-@*<h2>Details</h2>
-
-    <div>
-        <h4>Course</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.CourseName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.CourseName)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.CourseDescription)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.CourseDescription)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.IsActive)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.IsActive)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Category)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Category)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.CourseImg)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.CourseImg)
-            </dd>
-
-        </dl>
-    </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.CourseId }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>*@

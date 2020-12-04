@@ -15,10 +15,6 @@
     margin-top: 126px;
 }
 
-.contact-page__contact-details {
-    margin-bottom: 100px;
-}
-
 .email__confirmation-screen {
     height: calc(100vh - 215px);
 }
@@ -28,7 +24,9 @@
     height: 182px;
 }
 
-.course-list__grid {
+.course-list__grid,
+.contact-page__contact-details,
+.course-details__grid {
     margin-bottom: 100px;
 }
 
