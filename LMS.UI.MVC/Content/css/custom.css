@@ -26,7 +26,10 @@
 
 .course-list__grid,
 .contact-page__contact-details,
-.course-details__grid {
+.course-details__grid,
+.userdetails__grid,
+.lesson-create__grid,
+.lesson-edit__grid {
     margin-bottom: 100px;
 }
 

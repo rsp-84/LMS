@@ -14,12 +14,6 @@ namespace LMS.UI.MVC.Controllers
     {
         private LMSEntities db = new LMSEntities();
 
-        // GET: Reports
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         // GET: Employee
         [Authorize(Roles = "Employee")]
         public ActionResult Employee()

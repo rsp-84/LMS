@@ -6,7 +6,7 @@
 
 <div id="wrapper">
     <div class="container">
-        <div class="row login-wrapper">
+        <div class="row login-wrapper lesson-create__grid">
             <div>
                 <div class="panel panel-login">
                     <div class="panel-heading">
@@ -35,7 +35,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            @Html.LabelFor(model => model.CourseId, "CourseId", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <label class = "control-label col-md-2">Course</label>
                                             <div class="col-md-10">
                                                 @Html.DropDownList("CourseId", null, htmlAttributes: new { @class = "form-control" })
                                                 @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
@@ -82,6 +82,8 @@
                                             <div>
                                                 <input type="submit" value="Create" class="form-control btn btn-default" />
                                             </div>
+                                            <br />
+                                            <a href="@Url.Action("Admin", "Reports")" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Go Back</a>
                                         </div>
                                     </div>
                                 }

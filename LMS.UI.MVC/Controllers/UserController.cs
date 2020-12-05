@@ -38,49 +38,15 @@ namespace LMS.UI.MVC.Controllers
             return View(userDetail);
         }
 
-        // GET: User/Details/5
-        public ActionResult Details(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            UserDetail userDetail = db.UserDetails.Find(id);
-            if (userDetail == null)
-            {
-                return HttpNotFound();
-            }
-            return View(userDetail);
-        }
-
-        // GET: User/Create
-        public ActionResult Create()
-        {
-            ViewBag.ReportsTo = new SelectList(db.UserDetails, "UserId", "FirstName");
-            return View();
-        }
-
-        // POST: User/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserId,FirstName,LastName,ReportsTo,UserPhoto")] UserDetail userDetail)
-        {
-            if (ModelState.IsValid)
-            {
-                db.UserDetails.Add(userDetail);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.ReportsTo = new SelectList(db.UserDetails, "UserId", "FirstName", userDetail.ReportsTo);
-            return View(userDetail);
-        }
-
         // GET: User/Edit/5
+        [Authorize]
         public ActionResult Edit(string id)
         {
+            if (User.IsInRole("Employee") && User.Identity.GetUserId() != id
+                || User.IsInRole("Manager") && User.Identity.GetUserId() != id)
+            {
+                return RedirectToAction("../Home/Index");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -101,8 +67,14 @@ namespace LMS.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "UserId,FirstName,LastName,ReportsTo,UserPhoto")] UserDetail userDetail, HttpPostedFileBase userImg)
         {
+            if (User.IsInRole("Employee") && User.Identity.GetUserId() != userDetail.UserId
+                || User.IsInRole("Manager") && User.Identity.GetUserId() != userDetail.UserId)
+            {
+                return RedirectToAction("../Home/Index");
+            }
             if (ModelState.IsValid)
             {
                 #region File Upload - Using the Image Service
@@ -172,32 +144,6 @@ namespace LMS.UI.MVC.Controllers
             }
             ViewBag.ReportsTo = new SelectList(db.UserDetails, "UserId", "FirstName", userDetail.ReportsTo);
             return View(userDetail);
-        }
-
-        // GET: User/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            UserDetail userDetail = db.UserDetails.Find(id);
-            if (userDetail == null)
-            {
-                return HttpNotFound();
-            }
-            return View(userDetail);
-        }
-
-        // POST: User/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            UserDetail userDetail = db.UserDetails.Find(id);
-            db.UserDetails.Remove(userDetail);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

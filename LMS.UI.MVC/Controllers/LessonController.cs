@@ -18,14 +18,6 @@ namespace LMS.UI.MVC.Controllers
         private LMSEntities db = new LMSEntities();
         private string[] allowedExts = new string[] { ".pdf" };
 
-        // GET: Lessons
-        [Authorize(Roles = "Admin")]
-        public ActionResult Index()
-        {
-            var lessons = db.Lessons.Include(l => l.Course);
-            return View(lessons.ToList());
-        }
-
         // GET: Lessons/Details/5
         [Authorize]
         public ActionResult Details(int? id)
@@ -283,10 +275,10 @@ namespace LMS.UI.MVC.Controllers
 
                 db.Entry(lesson).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("../Reports/Admin");
             }
             ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", lesson.CourseId);
-            return View(lesson);
+            return RedirectToAction("../Reports/Admin");
         }
 
         // GET: Lessons/Delete/5
@@ -320,7 +312,7 @@ namespace LMS.UI.MVC.Controllers
 
             db.Lessons.Remove(lesson);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("../Reports/Admin");
         }
 
         protected override void Dispose(bool disposing)
