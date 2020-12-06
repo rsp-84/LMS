@@ -65,7 +65,7 @@ namespace LMS.UI.MVC.Controllers
         [Authorize(Roles = "Employee")]
         public ActionResult Completed(int? id)
         {
-           
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -82,7 +82,7 @@ namespace LMS.UI.MVC.Controllers
                 return RedirectToAction("Details", new { id });
             }
 
-                       
+
             LessonView lessonView = new LessonView
             {
                 UserId = User.Identity.GetUserId(),
@@ -152,11 +152,11 @@ namespace LMS.UI.MVC.Controllers
                     }
                     catch (Exception ex)
                     {
-                        return RedirectToAction("Index", "Courses");
+                        return RedirectToAction("Index", "Course");
                     }
                 }
 
-                return RedirectToAction("Index", "Courses");//TODO: Maybe make a congrats course finished page?
+                return RedirectToAction("Index", "Course");//TODO: Maybe make a congrats course finished page?
             }
 
             List<int> allLessonsInCourseId = new List<int>();
