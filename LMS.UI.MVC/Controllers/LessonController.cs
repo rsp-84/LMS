@@ -18,14 +18,6 @@ namespace LMS.UI.MVC.Controllers
         private LMSEntities db = new LMSEntities();
         private string[] allowedExts = new string[] { ".pdf" };
 
-        // GET: Lessons
-        [Authorize(Roles = "Admin")]
-        public ActionResult Index()
-        {
-            var lessons = db.Lessons.Include(l => l.Course);
-            return View(lessons.ToList());
-        }
-
         // GET: Lessons/Details/5
         [Authorize]
         public ActionResult Details(int? id)
@@ -73,7 +65,7 @@ namespace LMS.UI.MVC.Controllers
         [Authorize(Roles = "Employee")]
         public ActionResult Completed(int? id)
         {
-           
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -90,7 +82,7 @@ namespace LMS.UI.MVC.Controllers
                 return RedirectToAction("Details", new { id });
             }
 
-                       
+
             LessonView lessonView = new LessonView
             {
                 UserId = User.Identity.GetUserId(),
@@ -160,11 +152,11 @@ namespace LMS.UI.MVC.Controllers
                     }
                     catch (Exception ex)
                     {
-                        return RedirectToAction("Index", "Courses");
+                        return RedirectToAction("Index", "Course");
                     }
                 }
 
-                return RedirectToAction("Index", "Courses");//TODO: Maybe make a congrats course finished page?
+                return RedirectToAction("Index", "Course");//TODO: Maybe make a congrats course finished page?
             }
 
             List<int> allLessonsInCourseId = new List<int>();
@@ -283,10 +275,10 @@ namespace LMS.UI.MVC.Controllers
 
                 db.Entry(lesson).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("../Reports/Admin");
             }
             ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", lesson.CourseId);
-            return View(lesson);
+            return RedirectToAction("../Reports/Admin");
         }
 
         // GET: Lessons/Delete/5
@@ -320,7 +312,7 @@ namespace LMS.UI.MVC.Controllers
 
             db.Lessons.Remove(lesson);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("../Reports/Admin");
         }
 
         protected override void Dispose(bool disposing)

@@ -61,6 +61,7 @@ namespace LMS.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "CourseId,CourseName,CourseDescription,IsActive,Category,CourseImg")] Course course, HttpPostedFileBase courseImg)
         {
             if (ModelState.IsValid)

@@ -514,11 +514,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\UsersAdmin\Index.cshtml" />
     <Content Include="Views\UsersAdmin\Edit.cshtml" />
-    <Content Include="Views\UsersAdmin\Details.cshtml" />
-    <Content Include="Views\UsersAdmin\Delete.cshtml" />
-    <Content Include="Views\UsersAdmin\Create.cshtml" />
     <Content Include="Views\RolesAdmin\Index.cshtml" />
     <Content Include="Views\RolesAdmin\Edit.cshtml" />
     <Content Include="Views\RolesAdmin\Details.cshtml" />
@@ -538,7 +534,6 @@
     <Content Include="_archive\rs-plugin\font\revicons90c6.ttf" />
     <Content Include="_archive\rs-plugin\font\revicons90c6.woff" />
     <Content Include="Views\Home\EmailConfirmation.cshtml" />
-    <Content Include="Views\Home\Courses.cshtml" />
     <Content Include="Views\Course\Create.cshtml" />
     <Content Include="Views\Course\Delete.cshtml" />
     <Content Include="Views\Course\Details.cshtml" />
@@ -548,7 +543,6 @@
     <Content Include="Views\Lesson\Delete.cshtml" />
     <Content Include="Views\Lesson\Details.cshtml" />
     <Content Include="Views\Lesson\Edit.cshtml" />
-    <Content Include="Views\Lesson\Index.cshtml" />
     <Content Include="Views\Shared\_PdfLesson.cshtml" />
     <Content Include="Views\Shared\_YouTubeLesson.cshtml" />
     <Content Include="Views\Menu\EmployeeNavMenu.cshtml" />
@@ -556,17 +550,10 @@
     <Content Include="Views\Error\PageNotFound.cshtml" />
     <Content Include="Views\Reports\Employee.cshtml" />
     <Content Include="Views\Reports\Manager.cshtml" />
-    <Content Include="Views\User\Create.cshtml" />
-    <Content Include="Views\User\Delete.cshtml" />
-    <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Reports\Admin.cshtml" />
-    <Content Include="Views\UserDetails\Create.cshtml" />
-    <Content Include="Views\UserDetails\Delete.cshtml" />
-    <Content Include="Views\UserDetails\Details.cshtml" />
     <Content Include="Views\UserDetails\Edit.cshtml" />
-    <Content Include="Views\UserDetails\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

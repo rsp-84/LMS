@@ -264,7 +264,7 @@ namespace LMS.Controllers
                 {
                     await SignInAsync(user, isPersistent: false);
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                return RedirectToAction("../Home/Index");
             }
             AddErrors(result);
             return View(model);

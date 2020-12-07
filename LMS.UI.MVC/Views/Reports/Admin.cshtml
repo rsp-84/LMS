@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<LMS.UI.MVC.Models.CompanyAdminViewModel>
 
 @{
-    ViewBag.Title = "Admin";
+    ViewBag.Title = "Admin Report";
 }
 
 @section styles
@@ -98,7 +98,7 @@
                                                 <td><a href="@Url.Action("Edit", "User", new { id = employee.EmployeeId })">@employee.EmployeeFirstName @employee.EmployeeLastName</a></td>
                                                 @if (employee.EmployeeManagerName == "")
                                                 {
-                                                    <td><a href="@Url.Action("Edit", "UserDetails", new { id = employee.EmployeeId })" class="btn btn-small btn-primary">Assign</a></td>
+                                                    <td><a href="@Url.Action("Edit", "User", new { id = employee.EmployeeId })" class="btn btn-small btn-primary">Assign</a></td>
                                                 }
                                                 else
                                                 {

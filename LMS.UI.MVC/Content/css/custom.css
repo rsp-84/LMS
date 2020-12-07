@@ -6,20 +6,13 @@
     top: -36px;
 }
 
-.jumbotron__logo {
-
-}
-
 .jumbotron__call-to-action {
     margin-top: 128px;
+    background: rgba(255,255,255,.8) ;
 }
 
 .jumbotron__call-to-action--btn {
     margin-top: 126px;
-}
-
-.contact-page__contact-details {
-    margin-bottom: 100px;
 }
 
 .email__confirmation-screen {
@@ -31,7 +24,12 @@
     height: 182px;
 }
 
-.course-list__grid {
+.course-list__grid,
+.contact-page__contact-details,
+.course-details__grid,
+.userdetails__grid,
+.lesson-create__grid,
+.lesson-edit__grid {
     margin-bottom: 100px;
 }
 
@@ -89,4 +87,12 @@ a[alt]:hover:after {
 
 .usersadmin__submit-btn {
     margin-top: 1em;
+}
+
+.account-login__container {
+    margin-bottom: 79px;
+}
+
+.login-wrapper {
+    padding-top: 0;
 }
