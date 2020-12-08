@@ -211,11 +211,41 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\images\apple-touch-icon-57x57.png" />
     <Content Include="Content\images\apple-touch-icon.png" />
+    <Content Include="Content\images\courses\21014fdc-bda4-432c-8f08-afa2a0498e51.jpg" />
+    <Content Include="Content\images\courses\245ad0ae-1c2f-42bb-b089-a9d05750b79e.jpg" />
+    <Content Include="Content\images\courses\6f7c1956-ed6e-4e5a-82b4-262957c6d7d6.jpg" />
+    <Content Include="Content\images\courses\8084216d-f371-4546-b9f1-f647072769a9.jpg" />
+    <Content Include="Content\images\courses\85bace5d-4728-4cc2-b145-fc193fe6508d.jpg" />
+    <Content Include="Content\images\courses\89beef57-0443-4e6e-978f-1ca7128338b4.jpg" />
+    <Content Include="Content\images\courses\8f9d1336-647b-4962-8ec7-f8467f936f62.jpg" />
+    <Content Include="Content\images\courses\b3f4d032-4f58-44fd-aa69-690fc8f46575.jpg" />
+    <Content Include="Content\images\courses\bfa7c53a-def6-4869-aa8f-5560f1ec574c.jpg" />
+    <Content Include="Content\images\courses\ccd155d1-528d-4411-ac37-521c1dfeac80.jpg" />
+    <Content Include="Content\images\courses\d0e08920-1226-455c-8ce6-781c7aa3c2ad.jpg" />
+    <Content Include="Content\images\courses\t_21014fdc-bda4-432c-8f08-afa2a0498e51.jpg" />
+    <Content Include="Content\images\courses\t_245ad0ae-1c2f-42bb-b089-a9d05750b79e.jpg" />
+    <Content Include="Content\images\courses\t_6f7c1956-ed6e-4e5a-82b4-262957c6d7d6.jpg" />
+    <Content Include="Content\images\courses\t_8084216d-f371-4546-b9f1-f647072769a9.jpg" />
+    <Content Include="Content\images\courses\t_85bace5d-4728-4cc2-b145-fc193fe6508d.jpg" />
+    <Content Include="Content\images\courses\t_89beef57-0443-4e6e-978f-1ca7128338b4.jpg" />
+    <Content Include="Content\images\courses\t_8f9d1336-647b-4962-8ec7-f8467f936f62.jpg" />
+    <Content Include="Content\images\courses\t_b3f4d032-4f58-44fd-aa69-690fc8f46575.jpg" />
+    <Content Include="Content\images\courses\t_bfa7c53a-def6-4869-aa8f-5560f1ec574c.jpg" />
+    <Content Include="Content\images\courses\t_ccd155d1-528d-4411-ac37-521c1dfeac80.jpg" />
+    <Content Include="Content\images\courses\t_d0e08920-1226-455c-8ce6-781c7aa3c2ad.jpg" />
     <Content Include="Content\images\courses\t_noImage.png" />
     <Content Include="Content\images\courses\noImage.png" />
     <Content Include="Content\images\dummy.png" />
     <Content Include="Content\images\favicon.ico" />
     <Content Include="Content\images\loading.gif" />
+    <Content Include="Content\images\user\1942aedc-5f36-4f36-b7e1-6bf55a59a37d.jpg" />
+    <Content Include="Content\images\user\2031a70f-a7fb-4a12-b189-c4f5b7f905cc.png" />
+    <Content Include="Content\images\user\a2ac971c-b39f-4ab7-a56d-566bea9d3f6f.png" />
+    <Content Include="Content\images\user\c5e5c07a-f173-4f03-99c2-10d20de5990e.png" />
+    <Content Include="Content\images\user\t_1942aedc-5f36-4f36-b7e1-6bf55a59a37d.jpg" />
+    <Content Include="Content\images\user\t_2031a70f-a7fb-4a12-b189-c4f5b7f905cc.png" />
+    <Content Include="Content\images\user\t_a2ac971c-b39f-4ab7-a56d-566bea9d3f6f.png" />
+    <Content Include="Content\images\user\t_c5e5c07a-f173-4f03-99c2-10d20de5990e.png" />
     <Content Include="Content\images\xlogo.png" />
     <Content Include="Content\images\site.gif" />
     <Content Include="Content\images\xapple-touch-icon-114x114.png" />
@@ -467,6 +497,12 @@
     <Content Include="Content\rs-plugin\font\revicons90c6.eot" />
     <Content Include="Content\rs-plugin\font\revicons90c6.ttf" />
     <Content Include="Content\rs-plugin\font\revicons90c6.woff" />
+    <Content Include="Content\lessonPdf\10592adc-09b5-4544-91bd-6bca8ac5cccf.pdf" />
+    <Content Include="Content\lessonPdf\9961f21c-9ef6-45e1-9e74-0801776daa6a.pdf" />
+    <Content Include="Content\lessonPdf\ac451ebe-19d3-4f6b-b124-6f7745b14929.pdf" />
+    <Content Include="Content\lessonPdf\b0d18f0a-3192-412d-abd3-3f4a29870361.pdf" />
+    <Content Include="Content\lessonPdf\f00eccb0-6e25-46e9-91b9-45af5b48ee1e.pdf" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -557,8 +593,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\images\user\" />
-    <Folder Include="Content\lessonPdf\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
