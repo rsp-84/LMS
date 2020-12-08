@@ -140,14 +140,7 @@
                                                 <td>@activeCourse.Category</td>
                                                 <td>
                                                     <a href="@Url.Action("Edit", "Course", new { id = activeCourse.CourseId })" class="btn btn-sm btn-warning admin__edit-btn" title="edit"><i class="fa fa-edit"></i></a>
-                                                    @if (activeCourse.Lessons.Count > 0)
-                                                    {
-                                                        <a href="@Url.Action("Delete", "Course", new { id = activeCourse.CourseId, @class = "disabled"})" class="btn btn-sm btn-danger disabled" title="delete"><i class="fa fa-trash-o"></i></a>
-                                                    }
-                                                    else
-                                                    {
-                                                        <a href="@Url.Action("Delete", "Course", new { id = activeCourse.CourseId })" class="btn btn-sm btn-danger" title="delete"><i class="fa fa-trash-o"></i></a>
-                                                    }
+                                                    <a href="@Url.Action("Delete", "Course", new { id = activeCourse.CourseId })" class="btn btn-sm btn-danger" title="delete"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>
                                         }
@@ -176,14 +169,7 @@
                                                 <td>@inactiveCourse.Category</td>
                                                 <td>
                                                     <a href="@Url.Action("Edit", "Course", new { id = inactiveCourse.CourseId })" class="btn btn-sm btn-warning admin__edit-btn" title="edit"><i class="fa fa-edit"></i></a>
-                                                    @if (inactiveCourse.Lessons.Count > 0)
-                                                    {
-                                                        <a href="@Url.Action("Delete", "Course", new { id = inactiveCourse.CourseId, @class = "disabled"})" class="btn btn-sm btn-danger disabled" title="delete"><i class="fa fa-trash-o"></i></a>
-                                                    }
-                                                    else
-                                                    {
-                                                        <a href="@Url.Action("Delete", "Course", new { id = inactiveCourse.CourseId })" class="btn btn-sm btn-danger" title="delete"><i class="fa fa-trash-o"></i></a>
-                                                    }
+                                                    <a href="@Url.Action("Delete", "Course", new { id = inactiveCourse.CourseId })" class="btn btn-sm btn-danger" title="delete"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>
                                         }
