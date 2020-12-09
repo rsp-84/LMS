@@ -502,6 +502,7 @@
     <Content Include="Content\lessonPdf\ac451ebe-19d3-4f6b-b124-6f7745b14929.pdf" />
     <Content Include="Content\lessonPdf\b0d18f0a-3192-412d-abd3-3f4a29870361.pdf" />
     <Content Include="Content\lessonPdf\f00eccb0-6e25-46e9-91b9-45af5b48ee1e.pdf" />
+    <Content Include="Content\lessonPdf\RyanPflugradt-Documentation.pdf" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
